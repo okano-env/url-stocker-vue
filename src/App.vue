@@ -9,7 +9,10 @@ const CACHE_TTL = 3 * 60 * 1000
 
 // ── URL params ──
 const params = new URLSearchParams(location.search)
-const currentSheet = ref(params.get('sheet') || '')
+function getSheetFromHash() {
+  return decodeURIComponent(location.hash.slice(1))
+}
+const currentSheet = ref(getSheetFromHash())
 const showTabs = currentSheet.value
   ? params.get('tabs') === 'on'
   : params.get('tabs') !== 'off'
@@ -216,13 +219,13 @@ function renderData(data) {
 
 function switchSheet(name) {
   currentSheet.value = name
-  history.pushState(null, '', location.pathname + '?sheet=' + encodeURIComponent(name))
+  history.pushState(null, '', '#' + encodeURIComponent(name))
   load(name)
 }
 
 function copyShareUrl() {
   if (!currentSheet.value) { showToast('⚠️ タブでシートを選んでからコピーしてください'); return }
-  const url = location.origin + location.pathname + '?sheet=' + encodeURIComponent(currentSheet.value)
+  const url = location.origin + location.pathname + '#' + encodeURIComponent(currentSheet.value)
   navigator.clipboard.writeText(url).then(() => showToast('🔗 共有URLをコピーしました'))
 }
 
@@ -234,7 +237,16 @@ function forceReload() {
   load(currentSheet.value)
 }
 
-onMounted(() => load(currentSheet.value))
+function onHashChange() {
+  const sheet = getSheetFromHash()
+  currentSheet.value = sheet
+  load(sheet)
+}
+onMounted(() => {
+  window.addEventListener('hashchange', onHashChange)
+  load(currentSheet.value)
+})
+onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 </script>
 
 <template>
