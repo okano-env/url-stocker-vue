@@ -12,8 +12,12 @@ const params = new URLSearchParams(location.search)
 function getSheetFromHash() {
   return decodeURIComponent(location.hash.slice(1))
 }
+const SECRET_KEY = 'ib7uZJSLJAw'
+const hasKey = params.get('k') === SECRET_KEY
 const currentSheet = ref(getSheetFromHash())
-const showTabs = params.get('k') === 'ib7uZJSLJAw'
+const showTabs = hasKey
+// キーなし かつ ハッシュ（シート指定）なし → アクセス不可
+const isAccessible = hasKey || currentSheet.value !== ''
 
 // ── テーマ ──
 const theme = ref(localStorage.getItem('url-stocker-theme') || 'dark')
@@ -242,12 +246,17 @@ function onHashChange() {
 }
 onMounted(() => {
   window.addEventListener('hashchange', onHashChange)
-  load(currentSheet.value)
+  if (isAccessible) load(currentSheet.value)
 })
 onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 </script>
 
 <template>
+  <div v-if="!isAccessible" class="no-access">
+    <p>🔒</p>
+    <p>このページにはアクセスできません</p>
+  </div>
+  <template v-else>
   <header>
     <div class="header-top">
       <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
@@ -316,4 +325,5 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
     >↑</button>
   </Teleport>
+  </template>
 </template>
