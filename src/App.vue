@@ -287,7 +287,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
   />
 
   <div class="search-wrap">
-    <input type="text" v-model="searchQuery" placeholder="🔍 タイトル・URLで絞り込み..." />
+    <input type="text" v-model="searchQuery" placeholder="タイトル・URLで絞り込み..." />
   </div>
 
   <CardGrid
