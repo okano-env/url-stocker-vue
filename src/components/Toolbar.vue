@@ -67,7 +67,7 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
         </div>
       </div>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <div class="toolbar-right">
       <div style="display:flex;align-items:center;gap:6px;">
         <span class="sort-label">列数：</span>
         <button
