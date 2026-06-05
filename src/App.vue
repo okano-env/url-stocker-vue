@@ -13,9 +13,7 @@ function getSheetFromHash() {
   return decodeURIComponent(location.hash.slice(1))
 }
 const currentSheet = ref(getSheetFromHash())
-const showTabs = currentSheet.value
-  ? params.get('tabs') === 'on'
-  : params.get('tabs') !== 'off'
+const showTabs = params.get('k') === 'ib7uZJSLJAw'
 
 // ── テーマ ──
 const theme = ref(localStorage.getItem('url-stocker-theme') || 'dark')
