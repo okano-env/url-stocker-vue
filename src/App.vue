@@ -229,7 +229,7 @@ function load(sheet) {
 
 function renderData(data) {
   sheetName.value = data.sheetName
-  document.title = `${data.sheetName} - たまりくん`
+  document.title = 'たまりくん'
   const total = data.cards.length
   allCards.value = data.cards.map((c, i) => ({ ...c, originalIndex: total - i }))
   if (showTabs) sheets.value = data.sheets || []
