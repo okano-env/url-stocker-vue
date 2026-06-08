@@ -8,8 +8,9 @@ const props = defineProps({
   navDate: Date,
   favFilterOn: Boolean,
   currentCols: Number,
+  showImages: Boolean,
 })
-const emit = defineEmits(['set-sort', 'set-nav-mode', 'nav-step', 'go-today', 'toggle-fav-filter', 'set-cols'])
+const emit = defineEmits(['set-sort', 'set-nav-mode', 'nav-step', 'go-today', 'toggle-fav-filter', 'set-cols', 'toggle-images'])
 
 const sortArrows = { date: '日付順', title: 'タイトル順' }
 function sortLabel(type) {
@@ -78,6 +79,7 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
         >{{ n }}列</button>
       </div>
       <button :class="['fav-btn', { active: favFilterOn }]" @click="emit('toggle-fav-filter')">★ お気に入りのみ</button>
+      <button :class="['fav-btn', { active: !showImages }]" @click="emit('toggle-images')">{{ showImages ? '🖼️ 画像表示：オン' : '🚫 画像表示：オフ' }}</button>
     </div>
   </div>
 </template>

@@ -33,6 +33,13 @@ function toggleTheme() {
 }
 applyTheme(theme.value)
 
+// ── 画像表示 ──
+const showImages = ref(localStorage.getItem('url-stocker-images') !== 'off')
+function toggleImages() {
+  showImages.value = !showImages.value
+  localStorage.setItem('url-stocker-images', showImages.value ? 'on' : 'off')
+}
+
 // ── データ ──
 const allCards = ref([])
 const sheets = ref([])
@@ -268,6 +275,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
       <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
       <div class="header-actions">
+        <a class="share-btn" href="https://url-bulk-4702.surge.sh/" target="_blank" rel="noopener noreferrer" title="複数URLをまとめて登録できるフォームを開きます" style="text-decoration:none; display:inline-block">📥 とうろくんへ</a>
         <button class="share-btn" @click="helpOpen = true">📖 使い方</button>
         <button class="share-btn" @click="feedbackOpen = true">💬 意見箱</button>
       </div>
@@ -295,12 +303,14 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     :nav-date="navDate"
     :fav-filter-on="favFilterOn"
     :current-cols="currentCols"
+    :show-images="showImages"
     @set-sort="setSort"
     @set-nav-mode="setNavMode"
     @nav-step="navStep"
     @go-today="goToday"
     @toggle-fav-filter="toggleFavFilter"
     @set-cols="n => currentCols = n"
+    @toggle-images="toggleImages"
   />
 
   <div class="search-wrap">
@@ -311,6 +321,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     :cards="filteredCards"
     :favorites="favorites"
     :current-cols="currentCols"
+    :show-images="showImages"
     @open-focus="openFocus"
     @toggle-fav="toggleFav"
     @copy-url="copyUrl"
