@@ -76,13 +76,13 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: .04em;
   color: var(--accent);
   margin-bottom: var(--space-sm);
 }
-.site-name::before { content: '📚'; font-size: 1.1rem; }
+.site-name::before { content: '📚'; font-size: 1.5rem; }
 .header-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 /* 【対比】フッターはヘッダーと対になるよう、上端に同じグラデーション罫線を引く */
 .app-footer {
