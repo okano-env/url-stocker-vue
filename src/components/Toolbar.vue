@@ -72,7 +72,7 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
       <div style="display:flex;align-items:center;gap:6px;">
         <span class="sort-label">列数：</span>
         <button
-          v-for="n in [1, 2, 3]"
+          v-for="n in [1, 2, 3, 4]"
           :key="n"
           :class="['col-btn', { active: currentCols === n }]"
           @click="emit('set-cols', n)"

@@ -144,7 +144,7 @@ const metaText = computed(() => {
 })
 
 // ── 列数 ──
-const currentCols = ref(2)
+const currentCols = ref(3)
 
 // ── トースト ──
 const toastMsg = ref('')
