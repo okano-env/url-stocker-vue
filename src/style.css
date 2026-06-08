@@ -44,6 +44,9 @@
 
 *, *::before, *::after { transition: background-color .2s, border-color .2s, color .15s; box-sizing: border-box; margin: 0; padding: 0; }
 
+/* bodyの縦フレックスを子要素いっぱいに伸ばし、フッターを下端に固定できるようにする */
+#app { display: flex; flex-direction: column; flex: 1; }
+
 /* 【整列】コンテンツを中央揃えで最大幅制限 */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -51,6 +54,9 @@ body {
   color: var(--text);
   padding: var(--space-lg);
   min-height: 100vh;
+  /* 【整列】カードが少ないページでもフッターが浮かないよう、フレックスで縦に並べて下端に固定する */
+  display: flex;
+  flex-direction: column;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -65,13 +71,24 @@ header {
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(90deg, var(--accent), var(--accent2), transparent) 1;
 }
-/* サイト名バッジ — シート名（h1）より控えめに、ブランドとして添える */
-.site-name { font-size: .7rem; font-weight: 700; letter-spacing: .08em; color: var(--accent-lt); margin-bottom: 4px; }
+/* 【対比・反復】サイト名バッジ — シート名（h1）の主役を立てつつ、ブランドとして視認性を持たせる */
+.site-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: var(--accent);
+  margin-bottom: var(--space-sm);
+}
+.site-name::before { content: '📚'; font-size: 1.1rem; }
 .header-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 /* 【対比】フッターはヘッダーと対になるよう、上端に同じグラデーション罫線を引く */
 .app-footer {
-  margin-top: var(--space-xl);
-  padding-top: var(--space-md);
+  /* 【整列】コンテンツが少ないページでも画面下端に張り付くようにする */
+  margin-top: auto;
+  padding-top: var(--space-xl);
   border-top: 3px solid transparent;
   border-image: linear-gradient(90deg, var(--accent), var(--accent2), transparent) 1;
   text-align: center;

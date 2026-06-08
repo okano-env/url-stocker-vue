@@ -165,6 +165,7 @@ function copyUrl(url) {
 // ── スクロールトップ ──
 const showScrollTop = ref(false)
 function onScroll() { showScrollTop.value = window.scrollY > 320 }
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }) }
 onMounted(() => window.addEventListener('scroll', onScroll))
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
@@ -228,7 +229,7 @@ function load(sheet) {
 
 function renderData(data) {
   sheetName.value = data.sheetName
-  document.title = data.sheetName
+  document.title = `${data.sheetName} - たまりくん`
   const total = data.cards.length
   allCards.value = data.cards.map((c, i) => ({ ...c, originalIndex: total - i }))
   if (showTabs) sheets.value = data.sheets || []
@@ -353,7 +354,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     <button
       v-if="showScrollTop"
       class="scroll-top-btn"
-      @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      @click="scrollToTop"
     >↑</button>
   </Teleport>
 
