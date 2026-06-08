@@ -5,7 +5,12 @@ const emit = defineEmits(['close', 'sent'])
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxmuUCneFf06w2tFb-fuojnDLWrH6APH-pJHWg_zit7cf1wioKCaG32mZRAuoPxHNu5/exec'
 
-const categories = ['不具合', '使いにくい', '要望', 'その他']
+const categories = [
+  { value: '不具合', label: '🐛 不具合がある' },
+  { value: '使いにくい', label: '😵 使いにくい' },
+  { value: '要望', label: '💡 こんな機能が欲しい' },
+  { value: 'その他', label: '💬 その他' },
+]
 const category = ref('その他')
 const comment = ref('')
 const sending = ref(false)
@@ -34,8 +39,8 @@ async function send() {
       <button class="feedback-close" @click="emit('close')">×</button>
       <h2>💬 意見箱</h2>
       <div class="feedback-options">
-        <label v-for="c in categories" :key="c" class="feedback-option" :class="{ active: category === c }">
-          <input type="radio" :value="c" v-model="category"> {{ c }}
+        <label v-for="c in categories" :key="c.value" class="feedback-option" :class="{ active: category === c.value }">
+          <input type="radio" :value="c.value" v-model="category"> {{ c.label }}
         </label>
       </div>
       <textarea v-model="comment" placeholder="気になることを自由に書いてください..."></textarea>
