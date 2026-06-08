@@ -6,6 +6,8 @@ import FocusModal from './components/FocusModal.vue'
 import FeedbackModal from './components/FeedbackModal.vue'
 import HelpModal from './components/HelpModal.vue'
 
+const copyrightYear = new Date().getFullYear()
+
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxmuUCneFf06w2tFb-fuojnDLWrH6APH-pJHWg_zit7cf1wioKCaG32mZRAuoPxHNu5/exec'
 const CACHE_TTL = 3 * 60 * 1000
 
@@ -271,6 +273,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
   </div>
   <template v-else>
   <header>
+    <p class="site-name">たまりくん</p>
     <div class="header-top">
       <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
       <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
@@ -353,5 +356,9 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
     >↑</button>
   </Teleport>
+
+  <footer class="app-footer">
+    <p>© {{ copyrightYear }} hiromu-press</p>
+  </footer>
   </template>
 </template>

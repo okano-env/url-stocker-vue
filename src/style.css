@@ -63,7 +63,19 @@ header {
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(90deg, var(--accent), var(--accent2), transparent) 1;
 }
+/* サイト名バッジ — シート名（h1）より控えめに、ブランドとして添える */
+.site-name { font-size: .7rem; font-weight: 700; letter-spacing: .08em; color: var(--accent-lt); margin-bottom: 4px; }
 .header-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+/* 【対比】フッターはヘッダーと対になるよう、上端に同じグラデーション罫線を引く */
+.app-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent), var(--accent2), transparent) 1;
+  text-align: center;
+  color: var(--muted2);
+  font-size: .75rem;
+}
 /* 【対比】タイトルを2remに拡大してページ全体の視覚的重心を作る */
 h1 { font-size: 2rem; font-weight: 800; color: var(--title-color); letter-spacing: -.02em; }
 .theme-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: .15s; flex-shrink: 0; }
