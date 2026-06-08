@@ -4,6 +4,7 @@ import Toolbar from './components/Toolbar.vue'
 import CardGrid from './components/CardGrid.vue'
 import FocusModal from './components/FocusModal.vue'
 import FeedbackModal from './components/FeedbackModal.vue'
+import HelpModal from './components/HelpModal.vue'
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxmuUCneFf06w2tFb-fuojnDLWrH6APH-pJHWg_zit7cf1wioKCaG32mZRAuoPxHNu5/exec'
 const CACHE_TTL = 3 * 60 * 1000
@@ -158,8 +159,9 @@ function onScroll() { showScrollTop.value = window.scrollY > 320 }
 onMounted(() => window.addEventListener('scroll', onScroll))
 onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
-// ── 意見箱 ──
+// ── 意見箱 / 使い方 ──
 const feedbackOpen = ref(false)
+const helpOpen = ref(false)
 
 // ── フォーカスモード ──
 const focusIndex = ref(0)
@@ -265,7 +267,10 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     <div class="header-top">
       <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
       <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
-      <button class="share-btn" @click="feedbackOpen = true">💬 意見箱</button>
+      <div class="header-actions">
+        <button class="share-btn" @click="helpOpen = true">📖 使い方</button>
+        <button class="share-btn" @click="feedbackOpen = true">💬 意見箱</button>
+      </div>
       <button class="theme-btn" @click="toggleTheme">{{ theme === 'dark' ? '🌙' : '☀️' }}</button>
     </div>
     <p class="meta">
@@ -327,6 +332,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       @close="feedbackOpen = false"
       @sent="showToast('✅ 送信しました！ご意見ありがとうございます🙏')"
     />
+    <HelpModal v-if="helpOpen" @close="helpOpen = false" />
 
     <div :id="'toast'" :class="{ show: toastVisible }">{{ toastMsg }}</div>
 

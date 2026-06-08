@@ -220,6 +220,10 @@ input[type="text"]:focus {
 .card:hover::before { opacity: 1; }
 .card.is-fav::before { opacity: 1; background: linear-gradient(90deg, var(--gold), var(--orange)); }
 
+/* 【整列・反復】サムネイル画像 — 全カードで同じ比率に揃えて視覚的なリズムを作る */
+/* 【対比】下のテキストエリアと区切り線で明確に分離 */
+.thumbnail { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
+
 /* 【近接】メタ情報エリア — 上部にまとめて背景を変える */
 .card-top {
   display: flex;
@@ -314,3 +318,15 @@ input[type="text"]:focus {
 .feedback-send { width: 100%; padding: 12px; background: var(--accent); color: #fff; border: none; border-radius: 10px; font-size: .95rem; font-weight: 600; cursor: pointer; }
 .feedback-send:hover { background: var(--accent2); }
 .feedback-send:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ヘッダーアクション（近接性: 関連ボタンをグループ化） */
+.header-actions { display: flex; gap: 6px; }
+
+/* 取扱説明書 */
+.help-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 200; padding: 20px; }
+.help-modal { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; width: 100%; max-width: 460px; max-height: 80vh; overflow-y: auto; box-shadow: 0 8px 32px rgba(0,0,0,.3); }
+.help-modal h2 { font-size: 1.15rem; margin-bottom: 16px; color: var(--text); }
+.help-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 1.2rem; color: var(--accent-lt); cursor: pointer; }
+.help-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.help-list li { font-size: .85rem; line-height: 1.6; color: var(--text); border-left: 3px solid var(--accent); padding-left: 12px; }
+.help-list li strong { color: var(--accent-lt); }

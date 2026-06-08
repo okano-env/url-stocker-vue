@@ -22,6 +22,7 @@ function faviconUrl(domain) { return `https://www.google.com/s2/favicons?domain=
       :class="['card', { 'is-fav': isFav(c.url) }]"
       @click="emit('open-focus', i)"
     >
+      <img v-if="c.image" class="thumbnail" :src="c.image" :alt="c.title" loading="lazy" @error="e => e.target.remove()">
       <div class="card-top">
         <span class="card-num">{{ c.originalIndex }}</span>
         <img class="favicon" :src="faviconUrl(c.domain)" @error="e => e.target.style.display='none'">
