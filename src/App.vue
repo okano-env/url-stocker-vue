@@ -279,7 +279,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
       <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
       <div class="header-actions">
-        <a class="share-btn" href="https://url-bulk-4702.surge.sh/" target="_blank" rel="noopener noreferrer" title="複数URLをまとめて登録できるフォームを開きます" style="text-decoration:none; display:inline-block">📥 とうろくんへ</a>
+        <a class="share-btn" href="https://url-bulk-4702.surge.sh/" target="tamari-bulk" rel="noopener noreferrer" title="複数URLをまとめて登録できるフォームを開きます" style="text-decoration:none; display:inline-block">📥 とうろくんへ</a>
         <button class="share-btn" @click="helpOpen = true">📖 使い方</button>
         <button class="share-btn" @click="feedbackOpen = true">💬 意見箱</button>
       </div>
