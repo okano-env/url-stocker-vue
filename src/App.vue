@@ -285,7 +285,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
       <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
       <div class="header-actions">
-        <button class="share-btn" @click="openBulk" title="複数URLをまとめて登録できるフォームを開きます">📥 とうろくんへ</button>
+        <button v-if="showTabs" class="share-btn" @click="openBulk" title="複数URLをまとめて登録できるフォームを開きます">📥 とうろくんへ</button>
         <button class="share-btn" @click="helpOpen = true">📖 使い方</button>
         <button class="share-btn" @click="feedbackOpen = true">💬 意見箱</button>
       </div>
@@ -346,6 +346,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       @close="closeFocus"
       @move="focusMove"
       @toggle-fav="toggleFav"
+      @copy-url="copyUrl"
     />
 
     <FeedbackModal
