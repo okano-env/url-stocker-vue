@@ -229,7 +229,7 @@ function load(sheet) {
 
 function renderData(data) {
   sheetName.value = data.sheetName
-  document.title = 'たまりくん'
+  document.title = 'たまるん'
   const total = data.cards.length
   allCards.value = data.cards.map((c, i) => ({ ...c, originalIndex: total - i }))
   if (showTabs) sheets.value = data.sheets || []
@@ -280,7 +280,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
   </div>
   <template v-else>
   <header>
-    <p class="site-name">たまりくん</p>
+    <p class="site-name">たまるん</p>
     <div class="header-top">
       <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
       <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
