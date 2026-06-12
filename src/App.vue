@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import Toolbar from './components/Toolbar.vue'
 import CardGrid from './components/CardGrid.vue'
 import FocusModal from './components/FocusModal.vue'
@@ -144,7 +144,10 @@ const metaText = computed(() => {
 })
 
 // ── 列数 ──
-const currentCols = ref(3)
+const currentCols = ref(Number(localStorage.getItem('url-stocker-cols')) || 3)
+watch(currentCols, n => {
+  localStorage.setItem('url-stocker-cols', n)
+})
 
 // ── トースト ──
 const toastMsg = ref('')
