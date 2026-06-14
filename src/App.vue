@@ -283,21 +283,23 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
   </div>
   <template v-else>
   <header>
-    <p class="site-name">たまるん</p>
-    <div class="header-top">
-      <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
-      <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
+    <div class="header-row1">
+      <p class="site-name">たまるん</p>
       <div class="header-actions">
+        <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
         <button v-if="showTabs" class="share-btn" @click="openBulk" title="複数URLをまとめて登録できるフォームを開きます">📥 とうろくんへ</button>
         <button class="share-btn" @click="helpOpen = true">📖 使い方</button>
         <button class="share-btn" @click="feedbackOpen = true">💬 意見箱</button>
+        <button class="theme-btn" @click="toggleTheme">{{ theme === 'dark' ? '🌙' : '☀️' }}</button>
       </div>
-      <button class="theme-btn" @click="toggleTheme">{{ theme === 'dark' ? '🌙' : '☀️' }}</button>
     </div>
-    <p class="meta">
-      <span>{{ metaText }}</span>
-      <span v-if="syncing" class="sync-badge">↻ 更新中...</span>
-    </p>
+    <div class="header-row2">
+      <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
+      <p class="meta">
+        <span>{{ metaText }}</span>
+        <span v-if="syncing" class="sync-badge">↻ 更新中...</span>
+      </p>
+    </div>
   </header>
 
   <div v-if="showTabs && sheets.length" class="tabs">

@@ -67,23 +67,35 @@ body {
 header {
   margin-bottom: var(--space-xl);
   padding-bottom: var(--space-md);
-  /* アクセントグラデーションの下線で視覚的区切りを明確化 */
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(90deg, var(--accent), var(--accent2), transparent) 1;
 }
-/* 【対比・反復】サイト名バッジ — シート名（h1）の主役を立てつつ、ブランドとして視認性を持たせる */
+/* 1行目: site-name（左） + アクションボタン群（右） */
+.header-row1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+/* 2行目: h1（左） + 全件数（右） */
+.header-row2 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
 .site-name {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: .04em;
   color: var(--accent);
-  margin-bottom: var(--space-sm);
+  flex-shrink: 0;
 }
-.site-name::before { content: '📚'; font-size: 1.5rem; }
-.header-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.site-name::before { content: '📚'; font-size: 1.3rem; }
 /* 【対比】フッターはヘッダーと対になるよう、上端に同じグラデーション罫線を引く */
 .app-footer {
   /* 【整列】コンテンツが少ないページでも画面下端に張り付くようにする */
@@ -112,7 +124,7 @@ h1 { font-size: 2rem; font-weight: 800; color: var(--title-color); letter-spacin
   display: flex;
   gap: var(--space-sm);
   flex-wrap: wrap;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
   padding: var(--space-sm) var(--space-sm);
   background: var(--surface);
   border-radius: 14px;
@@ -132,21 +144,26 @@ h1 { font-size: 2rem; font-weight: 800; color: var(--title-color); letter-spacin
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--space-md);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 .toolbar-block {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 14px 18px;
+  padding: 16px 20px;
   min-width: 260px;
 }
 .toolbar-block--right {
   background: var(--surface2);
   border-color: var(--border-lt);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: auto;
 }
 .toolbar-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.group-label { color: var(--muted2); font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; min-width: 42px; }
+.toolbar-group--mt { margin-top: 10px; }
+.group-label { color: var(--muted2); font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; min-width: 46px; }
 
 /* セグメントピル */
 .seg-pill { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 22px; padding: 2px; gap: 1px; }
@@ -170,7 +187,7 @@ h1 { font-size: 2rem; font-weight: 800; color: var(--title-color); letter-spacin
 /* ════════════════════════════════════
    【対比】検索バー — 入力エリアを圧倒的に目立たせる
    ════════════════════════════════════ */
-.search-wrap { margin-bottom: var(--space-lg); position: relative; }
+.search-wrap { margin-bottom: var(--space-xl); position: relative; }
 .search-wrap::before {
   content: '🔍';
   position: absolute;

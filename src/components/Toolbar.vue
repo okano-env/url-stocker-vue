@@ -42,7 +42,7 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
 
 <template>
   <div class="toolbar">
-    <!-- 左ブロック：絞り込み条件 -->
+    <!-- 左ブロック：絞り込み条件＋列数 -->
     <div class="toolbar-block">
       <div class="toolbar-group">
         <span class="group-label">並び替え</span>
@@ -55,7 +55,7 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
           >{{ sortLabel(type) }}</button>
         </div>
       </div>
-      <div class="toolbar-group" style="margin-top:10px">
+      <div class="toolbar-group toolbar-group--mt">
         <span class="group-label">期間</span>
         <div class="seg-pill">
           <button
@@ -72,11 +72,7 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
           <button class="nav-arrow" @click="emit('nav-step', 1)">›</button>
         </div>
       </div>
-    </div>
-
-    <!-- 右ブロック：表示設定 -->
-    <div class="toolbar-block toolbar-block--right">
-      <div class="toolbar-group">
+      <div class="toolbar-group toolbar-group--mt">
         <span class="group-label">列数</span>
         <div class="seg-pill">
           <button
@@ -87,10 +83,12 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
           >{{ n }}列</button>
         </div>
       </div>
-      <div class="toolbar-group" style="margin-top:10px">
-        <button :class="['toggle-btn', { active: favFilterOn }]" @click="emit('toggle-fav-filter')">★ お気に入りのみ</button>
-        <button :class="['toggle-btn', { active: !showImages }]" @click="emit('toggle-images')">{{ showImages ? '🖼️ 画像：オン' : '🚫 画像：オフ' }}</button>
-      </div>
+    </div>
+
+    <!-- 右ブロック：表示フィルター -->
+    <div class="toolbar-block toolbar-block--right">
+      <button :class="['toggle-btn', { active: favFilterOn }]" @click="emit('toggle-fav-filter')">★ お気に入りのみ</button>
+      <button :class="['toggle-btn', { active: !showImages }]" @click="emit('toggle-images')" style="margin-top:8px">{{ showImages ? '🖼️ 画像：オン' : '🚫 画像：オフ' }}</button>
     </div>
   </div>
 </template>
