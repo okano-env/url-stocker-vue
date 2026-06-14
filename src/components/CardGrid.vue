@@ -1,4 +1,6 @@
 <script setup>
+import noImage from '../assets/no-image.png'
+
 const props = defineProps({
   cards: Array,
   favorites: Array,
@@ -9,6 +11,7 @@ const emit = defineEmits(['open-focus', 'toggle-fav', 'copy-url'])
 
 function isFav(url) { return props.favorites.includes(url) }
 function faviconUrl(domain) { return `https://www.google.com/s2/favicons?domain=${domain}&sz=32` }
+function onImgError(e) { e.target.src = noImage }
 </script>
 
 <template>
@@ -23,7 +26,7 @@ function faviconUrl(domain) { return `https://www.google.com/s2/favicons?domain=
       :class="['card', { 'is-fav': isFav(c.url) }]"
       @click="emit('open-focus', i)"
     >
-      <img v-if="c.image && showImages" class="thumbnail" :src="c.image" :alt="c.title" loading="lazy" @error="e => e.target.remove()">
+      <img v-if="showImages" class="thumbnail" :src="c.image || noImage" :alt="c.title" loading="lazy" @error="onImgError">
       <div class="card-top">
         <span class="card-num">{{ c.originalIndex }}</span>
         <img class="favicon" :src="faviconUrl(c.domain)" @error="e => e.target.style.display='none'">
