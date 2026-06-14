@@ -290,7 +290,10 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
         <button v-if="showTabs" class="share-btn" @click="openBulk" title="複数URLをまとめて登録できるフォームを開きます">📥 とうろくんへ</button>
         <button class="share-btn" @click="helpOpen = true">📖 使い方</button>
         <button class="share-btn" @click="feedbackOpen = true">💬 意見箱</button>
-        <button class="theme-btn" @click="toggleTheme">{{ theme === 'dark' ? '🌙' : '☀️' }}</button>
+        <div class="seg-pill">
+          <button :class="['seg-opt', { active: theme === 'light' }]" @click="applyTheme('light')">☀️ ライト</button>
+          <button :class="['seg-opt', { active: theme === 'dark' }]" @click="applyTheme('dark')">🌙 ダーク</button>
+        </div>
       </div>
     </div>
     <div class="header-row2">
