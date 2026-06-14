@@ -124,59 +124,48 @@ h1 { font-size: 2rem; font-weight: 800; color: var(--title-color); letter-spacin
 .tab.active { background: var(--accent); color: #fff; font-weight: 700; box-shadow: 0 2px 10px rgba(2,151,224,.4); }
 
 /* ════════════════════════════════════
-   【近接】ツールバー — 「絞り込み」と「表示設定」を視覚的に分離
+   ツールバー
    ════════════════════════════════════ */
 .toolbar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: var(--space-md);
   margin-bottom: var(--space-md);
 }
-/* 左グループ（絞り込み条件） */
-.toolbar > div:first-child {
+.toolbar-block {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 16px;
-  flex: 1;
-  min-width: 280px;
+  border-radius: 14px;
+  padding: 14px 18px;
+  min-width: 260px;
 }
-/* 右グループ（表示設定）— 左と同形・別枠で「異なるグループ」と認識させる */
-.toolbar-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+.toolbar-block--right {
   background: var(--surface2);
-  border: 1px solid var(--border-lt);
-  border-radius: 12px;
-  padding: 12px 16px;
+  border-color: var(--border-lt);
 }
-.sort-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.sort-label { color: var(--muted2); font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
-.sort-btn { padding: 5px 14px; border-radius: 20px; background: var(--bg); color: var(--muted2); font-size: .8rem; border: 1px solid var(--border); cursor: pointer; transition: .15s; }
-.sort-btn:hover { border-color: var(--border-lt); color: var(--text2); }
-.sort-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
-.fav-btn { padding: 5px 14px; border-radius: 20px; background: var(--bg); color: var(--muted2); font-size: .8rem; border: 1px solid var(--border); cursor: pointer; transition: .15s; }
-.fav-btn:hover { border-color: var(--border-lt); color: var(--text2); }
-.fav-btn.active { background: #2a1a04; color: var(--gold); border-color: var(--gold); font-weight: 600; }
+.toolbar-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.group-label { color: var(--muted2); font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; min-width: 42px; }
+
+/* セグメントピル */
+.seg-pill { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 22px; padding: 2px; gap: 1px; }
+.seg-opt { padding: 5px 14px; border-radius: 18px; border: none; background: none; color: var(--muted2); font-size: .8rem; cursor: pointer; transition: .15s; white-space: nowrap; }
+.seg-opt:hover:not(.active) { background: var(--surface2); color: var(--text2); }
+.seg-opt.active { background: var(--accent); color: #fff; font-weight: 600; }
+
+/* トグルボタン（お気に入り・画像表示） */
+.toggle-btn { padding: 5px 14px; border-radius: 20px; background: var(--bg); color: var(--muted2); font-size: .8rem; border: 1px solid var(--border); cursor: pointer; transition: .15s; white-space: nowrap; }
+.toggle-btn:hover { border-color: var(--border-lt); color: var(--text2); }
+.toggle-btn.active { background: #2a1a04; color: var(--gold); border-color: var(--gold); font-weight: 600; }
 
 /* ── 日付ナビゲーター ── */
-.date-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-.nav-mode-btn { padding: 4px 12px; border-radius: 20px; background: var(--bg); color: var(--muted2); font-size: .75rem; border: 1px solid var(--border); cursor: pointer; transition: .15s; }
-.nav-mode-btn:hover { border-color: var(--border-lt); color: var(--text2); }
-.nav-mode-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
 .nav-ctrl { display: flex; align-items: center; gap: 4px; background: var(--bg); border: 1px solid var(--border); border-radius: 24px; padding: 3px 10px; }
 .nav-arrow { background: none; border: none; color: var(--muted2); font-size: 1rem; cursor: pointer; padding: 2px 6px; transition: .15s; line-height: 1; border-radius: 50%; }
 .nav-arrow:hover { color: #fff; background: var(--surface2); }
 .nav-today-btn { background: none; border: 1px solid var(--border); border-radius: 12px; color: var(--accent-lt); font-size: .75rem; cursor: pointer; padding: 2px 8px; transition: .15s; }
 .nav-today-btn:hover { border-color: var(--accent); color: #fff; }
 .nav-label { color: var(--text); font-size: .875rem; font-weight: 600; min-width: 110px; text-align: center; }
-.col-btn { padding: 5px 12px; border-radius: 20px; background: var(--bg); color: var(--muted2); font-size: .8rem; border: 1px solid var(--border); cursor: pointer; transition: .15s; }
-.col-btn:hover { border-color: var(--border-lt); color: var(--text2); }
-.col-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
 
 /* ════════════════════════════════════
    【対比】検索バー — 入力エリアを圧倒的に目立たせる
