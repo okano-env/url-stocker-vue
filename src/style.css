@@ -472,15 +472,16 @@ input[type="text"]:focus {
 }
 .icon-btn:hover { background: var(--surface2); border-color: var(--border-lt); color: var(--text); }
 
-/* テーマ切り替えピル — 枠全体を押せるよう高さを合わせる */
+/* テーマ切り替えピル — アイコンのみ */
 .theme-pill { height: 48px; border-radius: 12px; }
 .theme-opt {
   height: 100%;
-  padding: 0 18px;
-  font-size: .95rem;
+  width: 44px;
+  padding: 0;
+  font-size: 1.3rem;
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
 }
 
 /* プライマリCTAボタン（とうろくんへ） */
