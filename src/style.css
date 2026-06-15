@@ -1,45 +1,45 @@
 :root {
-  --bg:        #060f1e;
-  --surface:   #0e2035;
-  --surface2:  #162b47;
-  --border:    #1b3f5e;
-  --border-lt: #2d6a95;
-  --accent:    #0297e0;
-  --accent2:   #33ace6;
-  --accent-lt: #99d5f3;
-  --muted:     #3d6070;
-  --muted2:    #5a7d90;
-  --text:      #e8f4fb;
-  --text2:     #b0cad8;
-  --orange:    #ff8900;
-  --orange2:   #ffa133;
-  --gold:      #c8860a;
-  --title-color: #ffffff;
-  --overlay-bg: rgba(4, 12, 28, .96);
-  /* 【反復】スペーシングスケールを統一 */
+  /* ── ダーク：深いパープル系 ── */
+  --bg:        #0d0b1a;
+  --surface:   #151228;
+  --surface2:  #1e1a38;
+  --border:    #2e2858;
+  --border-lt: #5248a0;
+  --accent:    #7c3aed;
+  --accent2:   #8b5cf6;
+  --accent-lt: #a78bfa;
+  --muted:     #4a4570;
+  --muted2:    #7b74a8;
+  --text:      #ede9fe;
+  --text2:     #c4b5fd;
+  --orange:    #f59e0b;
+  --orange2:   #fbbf24;
+  --gold:      #d97706;
+  --title-color: #f5f3ff;
+  --overlay-bg: rgba(10, 8, 22, .97);
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 32px;
 }
 [data-theme="light"] {
-  --bg:        #f0f4f8;
+  --bg:        #faf7ff;
   --surface:   #ffffff;
-  --surface2:  #e4edf6;
-  --border:    #c8d8e8;
-  --border-lt: #8aaecf;
-  --accent:    #0277c2;
-  --accent2:   #0297e0;
-  --accent-lt: #0277c2;
-  --muted:     #8aa0b0;
-  --muted2:    #5a7890;
-  --text:      #1a2a3a;
-  --text2:     #2a4a60;
-  --orange:    #d97000;
-  --orange2:   #f08800;
-  --gold:      #a06800;
-  --title-color: #1a2a3a;
-  --overlay-bg: rgba(220, 230, 240, .92);
+  --surface2:  #f3eeff;
+  --border:    #ddd6fe;
+  --border-lt: #a78bfa;
+  --accent:    #7c3aed;
+  --accent2:   #8b5cf6;
+  --accent-lt: #6d28d9;
+  --muted:     #c4b5fd;
+  --muted2:    #7c3aed;
+  --text:      #1e1b4b;
+  --text2:     #3730a3;
+  --orange:    #d97706;
+  --orange2:   #f59e0b;
+  --gold:      #b45309;
+  --title-color: #1e1b4b;
+  --overlay-bg: rgba(240, 235, 255, .95);
 }
 
 *, *::before, *::after { transition: background-color .2s, border-color .2s, color .15s; box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,7 +49,7 @@
 
 /* 【整列】コンテンツを中央揃えで最大幅制限 */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
   padding: var(--space-lg);
@@ -109,8 +109,8 @@ header {
   font-size: .72rem;
   letter-spacing: .06em;
 }
-/* 【対比】タイトルを3.5remに拡大してページ全体の視覚的重心を作る */
-h1 { font-size: 3.5rem; font-weight: 900; color: var(--title-color); letter-spacing: -.03em; line-height: 1.1; }
+/* 【対比】タイトルを3.5remに拡大、Zen Kaku で個性を出す */
+h1 { font-size: 3.5rem; font-weight: 900; color: var(--title-color); letter-spacing: -.03em; line-height: 1.1; font-family: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif; }
 .theme-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: .15s; flex-shrink: 0; }
 .theme-btn:hover { border-color: var(--border-lt); background: var(--surface2); }
 /* 【近接】メタ情報はh1の直下に配置し、関係性を明示 */
@@ -411,8 +411,41 @@ input[type="text"]:focus {
 .feedback-send:hover { background: var(--accent2); }
 .feedback-send:disabled { opacity: .5; cursor: not-allowed; }
 
-/* ヘッダーアクション（近接性: 関連ボタンをグループ化） */
-.header-actions { display: flex; gap: 6px; }
+/* ヘッダーアクション */
+.header-actions { display: flex; align-items: center; gap: 6px; }
+
+/* アイコンのみの小ボタン（サブ操作） */
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted2);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: .15s;
+  flex-shrink: 0;
+}
+.icon-btn:hover { background: var(--surface2); border-color: var(--border-lt); color: var(--text); }
+
+/* プライマリCTAボタン（とうろくんへ） */
+.cta-btn {
+  padding: 7px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: .82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .15s;
+  white-space: nowrap;
+}
+.cta-btn:hover { background: var(--accent2); transform: translateY(-1px); }
 
 /* 取扱説明書 */
 .help-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 200; padding: 20px; }

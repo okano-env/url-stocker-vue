@@ -286,13 +286,13 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     <div class="header-row1">
       <p class="site-name">たまるん</p>
       <div class="header-actions">
-        <button v-if="showTabs" class="share-btn" @click="copyShareUrl">🔗 共有URLをコピー</button>
-        <button v-if="showTabs" class="share-btn" @click="openBulk" title="複数URLをまとめて登録できるフォームを開きます">📥 とうろくんへ</button>
-        <button class="share-btn" @click="helpOpen = true">📖 使い方</button>
-        <button class="share-btn" @click="feedbackOpen = true">💬 意見箱</button>
+        <button v-if="showTabs" class="icon-btn" @click="copyShareUrl" title="共有URLをコピー">🔗</button>
+        <button v-if="showTabs" class="cta-btn" @click="openBulk" title="複数URLをまとめて登録">📥 とうろくんへ</button>
+        <button class="icon-btn" @click="helpOpen = true" title="使い方">📖</button>
+        <button class="icon-btn" @click="feedbackOpen = true" title="意見箱">💬</button>
         <div class="seg-pill">
-          <button :class="['seg-opt', { active: theme === 'light' }]" @click="applyTheme('light')">☀️ ライト</button>
-          <button :class="['seg-opt', { active: theme === 'dark' }]" @click="applyTheme('dark')">🌙 ダーク</button>
+          <button :class="['seg-opt', { active: theme === 'light' }]" @click="applyTheme('light')">☀️</button>
+          <button :class="['seg-opt', { active: theme === 'dark' }]" @click="applyTheme('dark')">🌙</button>
         </div>
       </div>
     </div>
