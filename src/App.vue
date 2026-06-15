@@ -297,10 +297,10 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       </div>
     </div>
     <div class="header-row2">
-      <h1>🔖 {{ sheetName || '読み込み中...' }}</h1>
+      <h1>{{ sheetName || '読み込み中...' }}</h1>
       <p class="meta">
         <span>{{ metaText }}</span>
-        <span v-if="syncing" class="sync-badge">↻ 更新中...</span>
+        <span v-if="syncing" class="sync-badge">↻ 更新中</span>
       </p>
     </div>
   </header>

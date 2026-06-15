@@ -62,13 +62,12 @@ body {
 }
 
 /* ════════════════════════════════════
-   【対比】ヘッダー — タイトルを大きく強調
+   【対比】ヘッダー — タイトルを圧倒的に大きく、左ラインで強調
    ════════════════════════════════════ */
 header {
   margin-bottom: var(--space-xl);
-  padding-bottom: var(--space-md);
-  border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg, var(--accent), var(--accent2), transparent) 1;
+  padding-bottom: var(--space-lg);
+  border-bottom: 2px solid var(--border);
 }
 /* 1行目: site-name（左） + アクションボタン群（右） */
 .header-row1 {
@@ -76,94 +75,115 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-lg);
 }
-/* 2行目: h1（左） + 全件数（右） */
+/* 2行目: h1とmetaを縦積み（近接: 関連情報を隣接させる） */
 .header-row2 {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  /* 【対比】左にアクセントラインを引いてタイトルを際立たせる */
+  border-left: 5px solid var(--accent);
+  padding-left: 20px;
 }
 .site-name {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: .04em;
-  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: var(--muted2);
   flex-shrink: 0;
+  text-transform: uppercase;
 }
-.site-name::before { content: '📚'; font-size: 1.3rem; }
-/* 【対比】フッターはヘッダーと対になるよう、上端に同じグラデーション罫線を引く */
+.site-name::before { content: '📚'; font-size: 1rem; }
+/* 【対比】フッターはヘッダーと対になるよう同色系で締める */
 .app-footer {
-  /* 【整列】コンテンツが少ないページでも画面下端に張り付くようにする */
   margin-top: auto;
   padding-top: var(--space-xl);
-  border-top: 3px solid transparent;
-  border-image: linear-gradient(90deg, var(--accent), var(--accent2), transparent) 1;
+  border-top: 2px solid var(--border);
   text-align: center;
-  color: var(--muted2);
-  font-size: .75rem;
+  color: var(--muted);
+  font-size: .72rem;
+  letter-spacing: .06em;
 }
-/* 【対比】タイトルを2remに拡大してページ全体の視覚的重心を作る */
-h1 { font-size: 2rem; font-weight: 800; color: var(--title-color); letter-spacing: -.02em; }
+/* 【対比】タイトルを3.5remに拡大してページ全体の視覚的重心を作る */
+h1 { font-size: 3.5rem; font-weight: 900; color: var(--title-color); letter-spacing: -.03em; line-height: 1.1; }
 .theme-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: .15s; flex-shrink: 0; }
 .theme-btn:hover { border-color: var(--border-lt); background: var(--surface2); }
-/* 【対比】メタ情報は小さく抑えてタイトルとの差を作る */
-.meta { color: var(--muted2); font-size: .75rem; display: flex; align-items: center; gap: 8px; }
-.sync-badge { font-size: .75rem; color: var(--accent-lt); }
-.share-btn { padding: 6px 14px; border-radius: 20px; background: var(--surface); color: var(--accent-lt); border: 1px solid var(--border); font-size: .8rem; cursor: pointer; transition: .15s; }
-.share-btn:hover { border-color: var(--border-lt); color: #fff; background: var(--surface2); }
+/* 【近接】メタ情報はh1の直下に配置し、関係性を明示 */
+.meta { color: var(--muted2); font-size: .8rem; display: flex; align-items: center; gap: 10px; }
+.sync-badge { font-size: .75rem; color: var(--accent-lt); background: rgba(2,151,224,.12); border: 1px solid rgba(2,151,224,.3); padding: 2px 8px; border-radius: 10px; }
+/* 【反復】アクションボタンを統一スタイルで揃える */
+.share-btn { padding: 7px 14px; border-radius: 8px; background: transparent; color: var(--muted2); border: 1px solid var(--border); font-size: .8rem; cursor: pointer; transition: .15s; font-weight: 500; }
+.share-btn:hover { border-color: var(--border-lt); color: var(--text); background: var(--surface2); }
 
 /* ════════════════════════════════════
-   【近接】タブ — 関連シートをグループとして固める
+   【対比・近接】タブ — 下線インジケーター方式で明確に区別
    ════════════════════════════════════ */
 .tabs {
   display: flex;
-  gap: var(--space-sm);
+  gap: 0;
   flex-wrap: wrap;
   margin-bottom: var(--space-xl);
-  padding: var(--space-sm) var(--space-sm);
-  background: var(--surface);
-  border-radius: 14px;
-  border: 1px solid var(--border);
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid var(--border);
 }
-.tab { padding: 8px 20px; border-radius: 10px; background: transparent; color: var(--muted2); font-size: .875rem; border: none; cursor: pointer; transition: .15s; font-weight: 500; }
-.tab:hover { background: var(--surface2); color: var(--text2); }
-/* 【対比】アクティブタブを背景色+太字で強く差別化 */
-.tab.active { background: var(--accent); color: #fff; font-weight: 700; box-shadow: 0 2px 10px rgba(2,151,224,.4); }
+.tab {
+  padding: 10px 24px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted2);
+  font-size: .9rem;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: .15s;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+.tab:hover { color: var(--text); background: var(--surface2); }
+/* 【対比】アクティブタブは底線だけで強調 — 背景なしで洗練を出す */
+.tab.active {
+  color: var(--accent);
+  font-weight: 800;
+  border-bottom-color: var(--accent);
+  background: transparent;
+  box-shadow: none;
+  font-size: 1rem;
+}
 
 /* ════════════════════════════════════
-   ツールバー
+   【整列・反復・近接】ツールバー — 1本の横並びフィルターバーに統合
    ════════════════════════════════════ */
 .toolbar {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
-  gap: var(--space-md);
+  gap: 6px;
   margin-bottom: var(--space-lg);
-}
-.toolbar-block {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px 20px;
-  min-width: 260px;
+  border-radius: 12px;
+  padding: 10px 16px;
 }
-.toolbar-block--right {
-  background: var(--surface2);
-  border-color: var(--border-lt);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: auto;
+/* 【反復】分割線で"グループの近接"を表現 */
+.toolbar-sep {
+  width: 1px;
+  height: 22px;
+  background: var(--border);
+  margin: 0 6px;
+  flex-shrink: 0;
 }
-.toolbar-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.toolbar-group--mt { margin-top: 10px; }
-.group-label { color: var(--muted2); font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; min-width: 46px; }
+.toolbar-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+/* 【反復】ラベルの形状を全グループで統一 */
+.group-label { color: var(--accent-lt); font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; background: rgba(2,151,224,.12); padding: 2px 7px; border-radius: 4px; }
 
 /* セグメントピル */
 .seg-pill { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 22px; padding: 2px; gap: 1px; }
@@ -187,7 +207,7 @@ h1 { font-size: 2rem; font-weight: 800; color: var(--title-color); letter-spacin
 /* ════════════════════════════════════
    【対比】検索バー — 入力エリアを圧倒的に目立たせる
    ════════════════════════════════════ */
-.search-wrap { margin-bottom: var(--space-xl); position: relative; }
+.search-wrap { margin-bottom: var(--space-md); position: relative; }
 .search-wrap::before {
   content: '🔍';
   position: absolute;
@@ -201,10 +221,8 @@ h1 { font-size: 2rem; font-weight: 800; color: var(--title-color); letter-spacin
 input[type="text"] {
   width: 100%;
   padding: 16px 18px 16px 48px;
-  border-radius: 14px;
-  /* 【対比】左に4pxのアクセントボーダーで「ここに入力」を主張 */
-  border: 2px solid var(--border-lt);
-  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  border: 2px solid var(--border);
   background: var(--surface);
   color: var(--text);
   font-size: 1.05rem;
@@ -213,8 +231,7 @@ input[type="text"] {
 }
 input[type="text"]:focus {
   border-color: var(--accent);
-  border-left-color: var(--accent2);
-  box-shadow: 0 0 0 4px rgba(2,151,224,.2);
+  box-shadow: 0 0 0 4px rgba(2,151,224,.15);
   background: var(--surface2);
 }
 
@@ -259,32 +276,30 @@ input[type="text"]:focus {
 .card.is-fav::before { opacity: 1; background: linear-gradient(90deg, var(--gold), var(--orange)); }
 
 /* 【整列・反復】サムネイル画像 — 全カードで同じ比率に揃えて視覚的なリズムを作る */
-/* 【対比】下のテキストエリアと区切り線で明確に分離 */
-.thumbnail { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-bottom: 1px solid var(--border); }
+.thumbnail { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
 
-/* 【近接】メタ情報エリア — 上部にまとめて背景を変える */
+/* 【近接】メタ情報エリア — 背景を抑えてタイトルとのコントラストを作る */
 .card-top {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 10px 16px;
-  background: var(--surface2);
+  padding: 10px 14px 8px;
   min-width: 0;
-  border-bottom: 1px solid var(--border);
 }
-.card-num { font-size: .7rem; color: var(--muted); flex-shrink: 0; font-variant-numeric: tabular-nums; }
-.favicon { width: 14px; height: 14px; flex-shrink: 0; opacity: .85; }
-.domain { color: var(--muted2); font-size: .72rem; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.date { color: var(--muted); font-size: .7rem; flex-shrink: 0; }
+/* 【対比】通し番号を廃止 — ノイズを減らしてタイトルを主役に */
+.card-num { display: none; }
+.favicon { width: 13px; height: 13px; flex-shrink: 0; opacity: .7; }
+.domain { color: var(--muted); font-size: .68rem; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.date { color: var(--muted); font-size: .65rem; flex-shrink: 0; }
 
-/* 【対比】タイトルエリア — フォントを大きく太くして主役を明確に */
+/* 【対比】タイトルを1.4remに拡大してカードの主役を明確に */
 .card-title-row {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  padding: 14px 16px 0;
+  padding: 4px 14px 0;
 }
-.title { font-weight: 700; font-size: 1.15rem; line-height: 1.5; flex: 1; color: var(--title-color); }
+.title { font-weight: 700; font-size: 1.4rem; line-height: 1.4; flex: 1; color: var(--title-color); }
 .star-btn { background: none; border: none; cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 2px 0 0; flex-shrink: 0; color: var(--muted); transition: .15s; }
 .star-btn:hover { color: var(--gold); transform: scale(1.2); }
 .star-btn.active { color: var(--gold); }
