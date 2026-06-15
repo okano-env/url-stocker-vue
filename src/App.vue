@@ -16,17 +16,10 @@ const params = new URLSearchParams(location.search)
 function getSheetFromHash() {
   return decodeURIComponent(location.hash.slice(1))
 }
-const SECRET_KEY = 'ib7uZJSLJAw'
-const AUTH_STORAGE = 'url-stocker-auth'
-
-// URLキーがあれば管理者としてlocalStorageに記録
-const hasKeyFromUrl = params.get('k') === SECRET_KEY
-if (hasKeyFromUrl) localStorage.setItem(AUTH_STORAGE, '1')
-const hasKey = hasKeyFromUrl || localStorage.getItem(AUTH_STORAGE) === '1'
 const currentSheet = ref(getSheetFromHash())
-// 共有モード: URLキーなし & ハッシュあり → タブを隠す
-const isShareMode = !hasKeyFromUrl && currentSheet.value !== ''
-const showTabs = hasKey && !isShareMode
+// 管理者専用ビルド: 常に全タブ表示
+const hasKey = true
+const showTabs = true
 
 // ── テーマ ──
 const theme = ref(localStorage.getItem('url-stocker-theme') || 'dark')
