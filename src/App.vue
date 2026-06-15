@@ -17,21 +17,14 @@ function getSheetFromHash() {
   return decodeURIComponent(location.hash.slice(1))
 }
 const SECRET_KEY = 'ib7uZJSLJAw'
-const AUTH_STORAGE = 'url-stocker-auth'
 
-// URLにキーがあれば認証をlocalStorageに保存
+// URLキーがあれば管理者
 const hasKeyFromUrl = params.get('k') === SECRET_KEY
-if (hasKeyFromUrl) localStorage.setItem(AUTH_STORAGE, '1')
-
-// URL or localStorage どちらかで認証済みならOK
-const hasKey = hasKeyFromUrl || localStorage.getItem(AUTH_STORAGE) === '1'
+const hasKey = hasKeyFromUrl
 const currentSheet = ref(getSheetFromHash())
-// 共有モード: URLキーなし & ハッシュあり → タブを隠す（localStorageの認証は無視）
+// 共有モード: URLキーなし & ハッシュあり → タブを隠す
 const isShareMode = !hasKeyFromUrl && currentSheet.value !== ''
 const showTabs = hasKey && !isShareMode
-// キーなし かつ ハッシュなし → 前回開いたシートがあればアクセス許可（ホーム画面起動対応）
-const lastSheet = localStorage.getItem('url-stocker-last-sheet')
-const isAccessible = hasKey || currentSheet.value !== '' || !!lastSheet
 
 // ── テーマ ──
 const theme = ref(localStorage.getItem('url-stocker-theme') || 'dark')
@@ -283,27 +276,19 @@ function onHashChange() {
 }
 onMounted(() => {
   window.addEventListener('hashchange', onHashChange)
-  if (isAccessible) {
-    // ハッシュがなければ最後に開いたシートに復元
-    if (!currentSheet.value) {
-      const last = localStorage.getItem('url-stocker-last-sheet')
-      if (last) {
-        currentSheet.value = last
-        history.replaceState(null, '', '#' + encodeURIComponent(last))
-      }
-    }
-    load(currentSheet.value)
+  // ハッシュがなければ: 前回開いたシート → なければ「ログ」をデフォルト表示
+  if (!currentSheet.value) {
+    const last = localStorage.getItem('url-stocker-last-sheet')
+    const defaultSheet = last || 'ログ'
+    currentSheet.value = defaultSheet
+    history.replaceState(null, '', '#' + encodeURIComponent(defaultSheet))
   }
+  load(currentSheet.value)
 })
 onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 </script>
 
 <template>
-  <div v-if="!isAccessible" class="no-access">
-    <p>🔒</p>
-    <p>このページにはアクセスできません</p>
-  </div>
-  <template v-else>
   <header>
     <div class="header-row1">
       <p class="site-name">たまるん</p>
@@ -398,5 +383,4 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
   <footer class="app-footer">
     <p>© {{ copyrightYear }} hiromu-press</p>
   </footer>
-  </template>
 </template>
