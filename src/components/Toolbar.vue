@@ -77,7 +77,7 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
 
     <div class="toolbar-sep"></div>
 
-    <div class="toolbar-group">
+    <div class="toolbar-group toolbar-group--cols">
       <span class="group-label">列</span>
       <div class="col-picker">
         <button

@@ -82,6 +82,11 @@
   /* グリッドアイコン列数ボタン */
   .col-btn { width: 30px; height: 24px; }
 
+  /* 列セレクターをスマホでは非表示 */
+  .toolbar-group--cols { display: none; }
+  /* 列セレクターの前の区切り線も非表示 */
+  .toolbar-sep:has(+ .toolbar-group--cols) { display: none; }
+
   /* ── 検索バー ── */
   .search-wrap { margin-bottom: 12px; }
   input[type="text"] { padding: 13px 14px 13px 42px; font-size: .95rem; }
@@ -109,15 +114,28 @@
   /* サムネイル：スマホでは少し短く */
   .thumbnail { aspect-ratio: 2 / 1; }
 
-  /* ── フォーカスモーダル ── */
+  /* ── フォーカスモーダル（テキストカード） ── */
   .focus-card { padding: 24px 20px; }
   .focus-title { font-size: 1.1rem; }
   .focus-actions { flex-direction: column; }
-  .focus-open-btn { padding: 12px; }
-  .focus-copy-btn { padding: 10px 14px; }
+  .focus-open-btn { padding: 16px; font-size: 1rem; }
+  .focus-copy-btn { padding: 14px 16px; font-size: .9rem; }
+  .focus-related { gap: 8px; }
+  .related-item { padding: 14px 16px; }
+  .related-label { font-size: .8rem; }
+  .related-title { font-size: .85rem; }
+  .nav-btn.back-btn { padding: 16px; font-size: 1rem; }
 
-  /* iframeプレビューはスマホで全画面 */
+  /* iframeプレビュー：スマホで全画面 + 操作しやすく */
   .focus-preview { width: 100vw; height: 100vh; border-radius: 0; }
+  .preview-header { padding: 10px 12px; gap: 6px; }
+  .preview-title { font-size: .82rem; }
+  .preview-counter { font-size: .78rem; }
+  .preview-copy-btn { padding: 6px 10px; font-size: .75rem; }
+  .preview-open-btn { padding: 6px 12px; font-size: .75rem; }
+  .preview-footer { padding: 12px 16px; }
+  .preview-footer .back-btn { padding: 16px; font-size: 1rem; }
+  .preview-related { padding: 0 12px; gap: 8px; }
 
   /* ── トースト：スマホでは下に固定 ── */
   #toast { bottom: 72px; font-size: .8rem; padding: 8px 18px; }

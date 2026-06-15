@@ -10,7 +10,7 @@ const emit = defineEmits(['close', 'move', 'toggle-fav', 'copy-url'])
 
 const card = computed(() => props.cards[props.focusIndex])
 const total = computed(() => props.cards.length)
-const counter = computed(() => `${card.value.originalIndex}番  (${props.focusIndex + 1} / ${total.value})`)
+const counter = computed(() => `${props.focusIndex + 1} / ${total.value}`)
 const faviconUrl = computed(() => `https://www.google.com/s2/favicons?domain=${card.value.domain}&sz=64`)
 const isFav = computed(() => props.favorites.includes(card.value.url))
 
@@ -21,10 +21,18 @@ const previewable = computed(() => isPreviewable(card.value.url))
 
 const prevCard = computed(() => props.focusIndex > 0 ? props.cards[props.focusIndex - 1] : null)
 const nextCard = computed(() => props.focusIndex < total.value - 1 ? props.cards[props.focusIndex + 1] : null)
+
+// スワイプ検出
+let touchStartX = 0
+function onTouchStart(e) { touchStartX = e.touches[0].clientX }
+function onTouchEnd(e) {
+  const dx = e.changedTouches[0].clientX - touchStartX
+  if (Math.abs(dx) > 60) emit('move', dx < 0 ? 1 : -1)
+}
 </script>
 
 <template>
-  <div class="focus-overlay" @click.self="emit('close')">
+  <div class="focus-overlay" @click.self="emit('close')" @touchstart="onTouchStart" @touchend="onTouchEnd">
     <!-- テキストカード -->
     <div v-if="!previewable" class="focus-card">
       <div class="focus-counter">{{ counter }}</div>
