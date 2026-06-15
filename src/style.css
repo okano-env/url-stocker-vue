@@ -166,12 +166,12 @@ h1 { font-size: 3.5rem; font-weight: 900; color: var(--title-color); letter-spac
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: var(--space-lg);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 16px;
+  border-radius: 14px;
+  padding: 12px 20px;
 }
 /* 【反復】分割線で"グループの近接"を表現 */
 .toolbar-sep {
@@ -186,27 +186,27 @@ h1 { font-size: 3.5rem; font-weight: 900; color: var(--title-color); letter-spac
 .group-label { color: var(--accent-lt); font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; background: rgba(2,151,224,.12); padding: 2px 7px; border-radius: 4px; }
 
 /* セグメントピル */
-.seg-pill { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 22px; padding: 2px; gap: 1px; }
-.seg-opt { padding: 5px 14px; border-radius: 18px; border: none; background: none; color: var(--muted2); font-size: .8rem; cursor: pointer; transition: .15s; white-space: nowrap; }
+.seg-pill { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 26px; padding: 3px; gap: 1px; }
+.seg-opt { padding: 7px 18px; border-radius: 22px; border: none; background: none; color: var(--muted2); font-size: .9rem; cursor: pointer; transition: .15s; white-space: nowrap; }
 .seg-opt:hover:not(.active) { background: var(--surface2); color: var(--text2); }
 .seg-opt.active { background: var(--accent); color: #fff; font-weight: 600; }
 
 /* トグルボタン（お気に入り・画像表示） */
-.toggle-btn { padding: 5px 14px; border-radius: 20px; background: var(--bg); color: var(--muted2); font-size: .8rem; border: 1px solid var(--border); cursor: pointer; transition: .15s; white-space: nowrap; }
+.toggle-btn { padding: 7px 18px; border-radius: 24px; background: var(--bg); color: var(--muted2); font-size: .9rem; border: 1px solid var(--border); cursor: pointer; transition: .15s; white-space: nowrap; }
 .toggle-btn:hover { border-color: var(--border-lt); color: var(--text2); }
 .toggle-btn.active { background: #2a1a04; color: var(--gold); border-color: var(--gold); font-weight: 600; }
 
 /* ── グリッドアイコン列数セレクター ── */
-.col-picker { display: flex; gap: 4px; }
+.col-picker { display: flex; gap: 5px; }
 .col-btn {
-  width: 36px;
-  height: 28px;
+  width: 42px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg);
   border: 1.5px solid var(--border);
-  border-radius: 7px;
+  border-radius: 8px;
   color: var(--muted);
   cursor: pointer;
   transition: color .15s, border-color .15s, background .15s, transform .1s;
@@ -416,16 +416,16 @@ input[type="text"]:focus {
 
 /* アイコンのみの小ボタン（サブ操作） */
 .icon-btn {
-  width: 34px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 10px;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--muted2);
-  font-size: 1rem;
+  font-size: 1.15rem;
   cursor: pointer;
   transition: .15s;
   flex-shrink: 0;
@@ -434,12 +434,12 @@ input[type="text"]:focus {
 
 /* プライマリCTAボタン（とうろくんへ） */
 .cta-btn {
-  padding: 7px 16px;
-  border-radius: 8px;
+  padding: 9px 20px;
+  border-radius: 10px;
   background: var(--accent);
   color: #fff;
   border: none;
-  font-size: .82rem;
+  font-size: .9rem;
   font-weight: 700;
   cursor: pointer;
   transition: .15s;
