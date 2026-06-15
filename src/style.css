@@ -196,6 +196,29 @@ h1 { font-size: 3.5rem; font-weight: 900; color: var(--title-color); letter-spac
 .toggle-btn:hover { border-color: var(--border-lt); color: var(--text2); }
 .toggle-btn.active { background: #2a1a04; color: var(--gold); border-color: var(--gold); font-weight: 600; }
 
+/* ── グリッドアイコン列数セレクター ── */
+.col-picker { display: flex; gap: 4px; }
+.col-btn {
+  width: 36px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color .15s, border-color .15s, background .15s, transform .1s;
+}
+.col-btn:hover { border-color: var(--border-lt); color: var(--text2); transform: scale(1.08); }
+.col-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(2,151,224,.4);
+}
+
 /* ── 日付ナビゲーター ── */
 .nav-ctrl { display: flex; align-items: center; gap: 4px; background: var(--bg); border: 1px solid var(--border); border-radius: 24px; padding: 3px 10px; }
 .nav-arrow { background: none; border: none; color: var(--muted2); font-size: 1rem; cursor: pointer; padding: 2px 6px; transition: .15s; line-height: 1; border-radius: 50%; }

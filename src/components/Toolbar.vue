@@ -79,13 +79,27 @@ const todayLabel = computed(() => ({ day: '今日', week: '今週', month: '今�
 
     <div class="toolbar-group">
       <span class="group-label">列</span>
-      <div class="seg-pill">
+      <div class="col-picker">
         <button
           v-for="n in [1, 2, 3, 4]"
           :key="n"
-          :class="['seg-opt', { active: currentCols === n }]"
+          :class="['col-btn', { active: currentCols === n }]"
+          :title="`${n}列`"
           @click="emit('set-cols', n)"
-        >{{ n }}</button>
+        >
+          <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect
+              v-for="i in n"
+              :key="i"
+              :x="(i - 1) * (20 / n) + 1"
+              y="1"
+              :width="(20 / n) - 2"
+              height="12"
+              rx="1.5"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
       </div>
     </div>
 
