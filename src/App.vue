@@ -16,10 +16,11 @@ const params = new URLSearchParams(location.search)
 function getSheetFromHash() {
   return decodeURIComponent(location.hash.slice(1))
 }
-const currentSheet = ref(getSheetFromHash())
-// 管理者専用ビルド: 常に全タブ表示
-const hasKey = true
-const showTabs = true
+// pcの仕組みシート専用ビルド: 常にこのシートだけ表示
+const FIXED_SHEET = 'pcの仕組み'
+const currentSheet = ref(FIXED_SHEET)
+const hasKey = false
+const showTabs = false
 
 // ── テーマ ──
 const theme = ref(localStorage.getItem('url-stocker-theme') || 'dark')
@@ -270,15 +271,8 @@ function onHashChange() {
   load(sheet)
 }
 onMounted(() => {
-  window.addEventListener('hashchange', onHashChange)
-  // ハッシュがなければ: 前回開いたシート → なければ「ログ」をデフォルト表示
-  if (!currentSheet.value) {
-    const last = localStorage.getItem('url-stocker-last-sheet')
-    const defaultSheet = last || 'ログ'
-    currentSheet.value = defaultSheet
-    history.replaceState(null, '', '#' + encodeURIComponent(defaultSheet))
-  }
-  load(currentSheet.value)
+  // 固定シートを常にロード（ハッシュ・lastSheet無視）
+  load(FIXED_SHEET)
 })
 onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 </script>
