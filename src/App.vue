@@ -245,6 +245,8 @@ function renderData(data) {
   const total = data.cards.length
   allCards.value = data.cards.map((c, i) => ({ ...c, originalIndex: total - i }))
   if (showTabs) sheets.value = data.sheets || []
+  // 最後に開いたシートを記憶（ホーム画面起動時に復元するため）
+  if (data.sheetName) localStorage.setItem('url-stocker-last-sheet', data.sheetName)
 }
 
 function switchSheet(name) {
@@ -280,7 +282,17 @@ function onHashChange() {
 }
 onMounted(() => {
   window.addEventListener('hashchange', onHashChange)
-  if (isAccessible) load(currentSheet.value)
+  if (isAccessible) {
+    // ハッシュがなければ最後に開いたシートに復元
+    if (!currentSheet.value) {
+      const last = localStorage.getItem('url-stocker-last-sheet')
+      if (last) {
+        currentSheet.value = last
+        history.replaceState(null, '', '#' + encodeURIComponent(last))
+      }
+    }
+    load(currentSheet.value)
+  }
 })
 onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 </script>
