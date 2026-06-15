@@ -17,7 +17,14 @@ function getSheetFromHash() {
   return decodeURIComponent(location.hash.slice(1))
 }
 const SECRET_KEY = 'ib7uZJSLJAw'
-const hasKey = params.get('k') === SECRET_KEY
+const AUTH_STORAGE = 'url-stocker-auth'
+
+// URLにキーがあれば認証をlocalStorageに保存
+const hasKeyFromUrl = params.get('k') === SECRET_KEY
+if (hasKeyFromUrl) localStorage.setItem(AUTH_STORAGE, '1')
+
+// URL or localStorage どちらかで認証済みならOK
+const hasKey = hasKeyFromUrl || localStorage.getItem(AUTH_STORAGE) === '1'
 const currentSheet = ref(getSheetFromHash())
 const showTabs = hasKey
 // キーなし かつ ハッシュ（シート指定）なし → アクセス不可
