@@ -26,7 +26,9 @@ if (hasKeyFromUrl) localStorage.setItem(AUTH_STORAGE, '1')
 // URL or localStorage どちらかで認証済みならOK
 const hasKey = hasKeyFromUrl || localStorage.getItem(AUTH_STORAGE) === '1'
 const currentSheet = ref(getSheetFromHash())
-const showTabs = hasKey
+// 共有モード: URLキーなし & ハッシュあり → タブを隠す（localStorageの認証は無視）
+const isShareMode = !hasKeyFromUrl && currentSheet.value !== ''
+const showTabs = hasKey && !isShareMode
 // キーなし かつ ハッシュ（シート指定）なし → アクセス不可
 const isAccessible = hasKey || currentSheet.value !== ''
 
