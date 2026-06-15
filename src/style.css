@@ -414,6 +414,46 @@ input[type="text"]:focus {
 /* ヘッダーアクション */
 .header-actions { display: flex; align-items: center; gap: 6px; }
 
+/* ── ツールチップ ── */
+.tip { position: relative; }
+.tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border-lt);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: .78rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .18s, transform .18s;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  z-index: 999;
+}
+.tip::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  border: 6px solid transparent;
+  border-top-color: var(--border-lt);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .18s, transform .18s;
+  z-index: 999;
+}
+.tip:hover::after,
+.tip:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 /* アイコンのみの小ボタン（サブ操作） */
 .icon-btn {
   width: 48px;

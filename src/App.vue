@@ -295,10 +295,10 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     <div class="header-row1">
       <p class="site-name">たまるん</p>
       <div class="header-actions">
-        <button v-if="showTabs" class="icon-btn" @click="copyShareUrl" title="共有URLをコピー">🔗</button>
-        <button v-if="showTabs" class="cta-btn" @click="openBulk" title="複数URLをまとめて登録">📥 とうろくんへ</button>
-        <button class="icon-btn" @click="helpOpen = true" title="使い方">📖</button>
-        <button class="icon-btn" @click="feedbackOpen = true" title="意見箱">💬</button>
+        <button v-if="showTabs" class="icon-btn tip" data-tip="現在のシートのURLをコピー" @click="copyShareUrl">🔗</button>
+        <button v-if="showTabs" class="cta-btn tip" data-tip="複数URLをまとめて登録" @click="openBulk">📥 とうろくんへ</button>
+        <button class="icon-btn tip" data-tip="使い方を見る" @click="helpOpen = true">📖</button>
+        <button class="icon-btn tip" data-tip="ご意見・ご要望はこちら" @click="feedbackOpen = true">💬</button>
         <div class="seg-pill theme-pill">
           <button :class="['seg-opt', 'theme-opt', { active: theme === 'light' }]" @click="toggleTheme">☀️ ライト</button>
           <button :class="['seg-opt', 'theme-opt', { active: theme === 'dark' }]" @click="toggleTheme">🌙 ダーク</button>
