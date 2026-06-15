@@ -299,9 +299,10 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
         <button v-if="showTabs" class="cta-btn" @click="openBulk" title="複数URLをまとめて登録">📥 とうろくんへ</button>
         <button class="icon-btn" @click="helpOpen = true" title="使い方">📖</button>
         <button class="icon-btn" @click="feedbackOpen = true" title="意見箱">💬</button>
-        <button class="icon-btn theme-toggle-btn" @click="toggleTheme" :title="theme === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え'">
-          {{ theme === 'dark' ? '☀️' : '🌙' }}
-        </button>
+        <div class="seg-pill theme-pill">
+          <button :class="['seg-opt', 'theme-opt', { active: theme === 'light' }]" @click="applyTheme('light')">☀️ ライト</button>
+          <button :class="['seg-opt', 'theme-opt', { active: theme === 'dark' }]" @click="applyTheme('dark')">🌙 ダーク</button>
+        </div>
       </div>
     </div>
     <div class="header-row2">

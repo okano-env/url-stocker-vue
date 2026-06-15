@@ -416,21 +416,32 @@ input[type="text"]:focus {
 
 /* アイコンのみの小ボタン（サブ操作） */
 .icon-btn {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 12px;
   background: transparent;
   border: 1px solid var(--border);
   color: var(--muted2);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   cursor: pointer;
   transition: .15s;
   flex-shrink: 0;
 }
 .icon-btn:hover { background: var(--surface2); border-color: var(--border-lt); color: var(--text); }
+
+/* テーマ切り替えピル — 枠全体を押せるよう高さを合わせる */
+.theme-pill { height: 48px; border-radius: 12px; }
+.theme-opt {
+  height: 100%;
+  padding: 0 18px;
+  font-size: .95rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 
 /* プライマリCTAボタン（とうろくんへ） */
 .cta-btn {
