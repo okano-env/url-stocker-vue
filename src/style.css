@@ -1,15 +1,15 @@
 :root {
   /* ── ダーク：深海ネイビー × 電光シアン ── */
   --bg:        #020c18;
-  --surface:   #091a2e;
-  --surface2:  #102540;
-  --border:    #1a3a58;
-  --border-lt: #2d6090;
+  --surface:   #0a1e35;
+  --surface2:  #132d4a;
+  --border:    #1e4870;
+  --border-lt: #3578a8;
   --accent:    #0ea5e9;
   --accent2:   #38bdf8;
   --accent-lt: #7dd3fc;
-  --muted:     #2d4f68;
-  --muted2:    #527d98;
+  --muted:     #4a7a9b;   /* 非アクティブテキスト：明るく */
+  --muted2:    #8ab8d4;   /* ラベル等：さらに明るく */
   --text:      #e0f2fe;
   --text2:     #bae6fd;
   --orange:    #f59e0b;
@@ -23,23 +23,23 @@
   --space-xl: 32px;
 }
 [data-theme="light"] {
-  --bg:        #f0f8ff;
+  --bg:        #dceefb;   /* ツールバー内ピルの背景：はっきり区別できるよう濃く */
   --surface:   #ffffff;
-  --surface2:  #e0f2fe;
-  --border:    #bae6fd;
-  --border-lt: #7dd3fc;
+  --surface2:  #e8f4fd;
+  --border:    #93c5e8;   /* ボーダーを濃くして枠を見えやすく */
+  --border-lt: #5aaad4;
   --accent:    #0284c7;
   --accent2:   #0ea5e9;
   --accent-lt: #0369a1;
-  --muted:     #90cff0;
-  --muted2:    #0369a1;
-  --text:      #082f49;
-  --text2:     #0c4a6e;
+  --muted:     #3a7aaa;   /* 非アクティブテキスト：濃く */
+  --muted2:    #1a5276;   /* ラベル等：さらに濃く */
+  --text:      #062030;
+  --text2:     #0c3a56;
   --orange:    #d97706;
   --orange2:   #f59e0b;
   --gold:      #b45309;
-  --title-color: #082f49;
-  --overlay-bg: rgba(224, 242, 254, .95);
+  --title-color: #062030;
+  --overlay-bg: rgba(210, 235, 250, .95);
 }
 
 *, *::before, *::after { transition: background-color .2s, border-color .2s, color .15s; box-sizing: border-box; margin: 0; padding: 0; }
