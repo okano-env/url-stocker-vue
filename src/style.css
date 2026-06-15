@@ -422,9 +422,9 @@ input[type="text"]:focus {
   bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%) translateY(4px);
-  background: var(--surface2);
-  color: var(--text);
-  border: 1px solid var(--border-lt);
+  background: #1a2a3a;
+  color: #ffffff;
+  border: 1px solid #4a90c8;
   border-radius: 8px;
   padding: 6px 12px;
   font-size: .78rem;
@@ -432,7 +432,7 @@ input[type="text"]:focus {
   pointer-events: none;
   opacity: 0;
   transition: opacity .18s, transform .18s;
-  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,.5);
   z-index: 999;
 }
 .tip::before {
@@ -442,7 +442,7 @@ input[type="text"]:focus {
   left: 50%;
   transform: translateX(-50%) translateY(4px);
   border: 6px solid transparent;
-  border-top-color: var(--border-lt);
+  border-top-color: #4a90c8;
   pointer-events: none;
   opacity: 0;
   transition: opacity .18s, transform .18s;
