@@ -29,8 +29,9 @@ const currentSheet = ref(getSheetFromHash())
 // 共有モード: URLキーなし & ハッシュあり → タブを隠す（localStorageの認証は無視）
 const isShareMode = !hasKeyFromUrl && currentSheet.value !== ''
 const showTabs = hasKey && !isShareMode
-// キーなし かつ ハッシュ（シート指定）なし → アクセス不可
-const isAccessible = hasKey || currentSheet.value !== ''
+// キーなし かつ ハッシュなし → 前回開いたシートがあればアクセス許可（ホーム画面起動対応）
+const lastSheet = localStorage.getItem('url-stocker-last-sheet')
+const isAccessible = hasKey || currentSheet.value !== '' || !!lastSheet
 
 // ── テーマ ──
 const theme = ref(localStorage.getItem('url-stocker-theme') || 'dark')
