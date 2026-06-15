@@ -1,45 +1,45 @@
 :root {
-  /* ── ダーク：深いパープル系 ── */
-  --bg:        #0d0b1a;
-  --surface:   #151228;
-  --surface2:  #1e1a38;
-  --border:    #2e2858;
-  --border-lt: #5248a0;
-  --accent:    #7c3aed;
-  --accent2:   #8b5cf6;
-  --accent-lt: #a78bfa;
-  --muted:     #4a4570;
-  --muted2:    #7b74a8;
-  --text:      #ede9fe;
-  --text2:     #c4b5fd;
+  /* ── ダーク：深海ネイビー × 電光シアン ── */
+  --bg:        #020c18;
+  --surface:   #091a2e;
+  --surface2:  #102540;
+  --border:    #1a3a58;
+  --border-lt: #2d6090;
+  --accent:    #0ea5e9;
+  --accent2:   #38bdf8;
+  --accent-lt: #7dd3fc;
+  --muted:     #2d4f68;
+  --muted2:    #527d98;
+  --text:      #e0f2fe;
+  --text2:     #bae6fd;
   --orange:    #f59e0b;
   --orange2:   #fbbf24;
   --gold:      #d97706;
-  --title-color: #f5f3ff;
-  --overlay-bg: rgba(10, 8, 22, .97);
+  --title-color: #f0f9ff;
+  --overlay-bg: rgba(2, 10, 22, .97);
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 32px;
 }
 [data-theme="light"] {
-  --bg:        #faf7ff;
+  --bg:        #f0f8ff;
   --surface:   #ffffff;
-  --surface2:  #f3eeff;
-  --border:    #ddd6fe;
-  --border-lt: #a78bfa;
-  --accent:    #7c3aed;
-  --accent2:   #8b5cf6;
-  --accent-lt: #6d28d9;
-  --muted:     #c4b5fd;
-  --muted2:    #7c3aed;
-  --text:      #1e1b4b;
-  --text2:     #3730a3;
+  --surface2:  #e0f2fe;
+  --border:    #bae6fd;
+  --border-lt: #7dd3fc;
+  --accent:    #0284c7;
+  --accent2:   #0ea5e9;
+  --accent-lt: #0369a1;
+  --muted:     #90cff0;
+  --muted2:    #0369a1;
+  --text:      #082f49;
+  --text2:     #0c4a6e;
   --orange:    #d97706;
   --orange2:   #f59e0b;
   --gold:      #b45309;
-  --title-color: #1e1b4b;
-  --overlay-bg: rgba(240, 235, 255, .95);
+  --title-color: #082f49;
+  --overlay-bg: rgba(224, 242, 254, .95);
 }
 
 *, *::before, *::after { transition: background-color .2s, border-color .2s, color .15s; box-sizing: border-box; margin: 0; padding: 0; }
