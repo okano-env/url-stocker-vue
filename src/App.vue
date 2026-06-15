@@ -300,8 +300,8 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
         <button class="icon-btn" @click="helpOpen = true" title="使い方">📖</button>
         <button class="icon-btn" @click="feedbackOpen = true" title="意見箱">💬</button>
         <div class="seg-pill theme-pill">
-          <button :class="['seg-opt', 'theme-opt', { active: theme === 'light' }]" @click="applyTheme('light')">☀️ ライト</button>
-          <button :class="['seg-opt', 'theme-opt', { active: theme === 'dark' }]" @click="applyTheme('dark')">🌙 ダーク</button>
+          <button :class="['seg-opt', 'theme-opt', { active: theme === 'light' }]" @click="toggleTheme">☀️ ライト</button>
+          <button :class="['seg-opt', 'theme-opt', { active: theme === 'dark' }]" @click="toggleTheme">🌙 ダーク</button>
         </div>
       </div>
     </div>
