@@ -206,11 +206,11 @@ async function submitEdit() {
 
 function deleteCard(card) {
   if (!window.confirm(`「${card.title}」を削除しますか？`)) return
-  allCards.value = allCards.value.filter(c => c.url !== card.url)
+  allCards.value = allCards.value.filter(c => c.originalIndex !== card.originalIndex)
   showToast('🗑️ 削除しました')
   fetch(GAS_URL, {
     method: 'POST',
-    body: JSON.stringify({ type: 'delete', sheet: sheetName.value, url: card.url })
+    body: JSON.stringify({ type: 'delete', sheet: sheetName.value, url: card.url, rowIndex: card.originalIndex })
   }).catch(() => {})
 }
 
