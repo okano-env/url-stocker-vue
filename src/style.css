@@ -501,3 +501,23 @@ input[type="text"]:focus {
 .help-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .help-list li { font-size: .85rem; line-height: 1.6; color: var(--text); border-left: 3px solid var(--accent); padding-left: 12px; }
 .help-list li strong { color: var(--accent-lt); }
+
+/* ── 管理者ボタン（編集・削除）── */
+.admin-btns { position: absolute; top: 8px; right: 8px; display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+.card:hover .admin-btns { opacity: 1; }
+.admin-btn { width: 28px; height: 28px; border-radius: 6px; border: none; cursor: pointer; font-size: .85rem; display: flex; align-items: center; justify-content: center; }
+.edit-btn { background: var(--surface2); color: var(--text); }
+.edit-btn:hover { background: var(--accent); color: #fff; }
+.del-btn { background: var(--surface2); color: var(--text); }
+.del-btn:hover { background: #ef4444; color: #fff; }
+
+/* ── 編集モーダル ── */
+.edit-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; z-index: 300; padding: 20px; }
+.edit-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; width: 100%; max-width: 480px; box-shadow: 0 8px 32px rgba(0,0,0,.3); display: flex; flex-direction: column; gap: 16px; }
+.edit-label { font-size: .85rem; color: var(--muted); }
+.edit-input { width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 1rem; outline: none; box-sizing: border-box; }
+.edit-input:focus { border-color: var(--accent); }
+.edit-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.edit-cancel { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: none; color: var(--muted); cursor: pointer; }
+.edit-submit { padding: 8px 20px; border-radius: 8px; border: none; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; }
+.edit-submit:hover { background: var(--accent2); }
