@@ -207,7 +207,7 @@ async function submitEdit() {
 function deleteCard(card) {
   const pw = window.prompt(`「${card.title}」を削除します。\nパスワードを入力してください。`)
   if (pw === null) return
-  if (pw !== SECRET_KEY) { showToast('❌ パスワードが違います'); return }
+  if (pw !== '0130') { showToast('❌ パスワードが違います'); return }
   allCards.value = allCards.value.filter(c => c.originalIndex !== card.originalIndex)
   showToast('🗑️ 削除しました')
   fetch(GAS_URL, {
