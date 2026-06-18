@@ -16,8 +16,8 @@ const params = new URLSearchParams(location.search)
 function getSheetFromHash() {
   return decodeURIComponent(location.hash.slice(1))
 }
-// pcの仕組みシート専用ビルド: 常にこのシートだけ表示
-const FIXED_SHEET = 'pcの仕組み'
+// PCの仕組みシート専用ビルド: 常にこのシートだけ表示
+const FIXED_SHEET = 'PCの仕組み'
 const currentSheet = ref(FIXED_SHEET)
 const hasKey = false
 const showTabs = false
