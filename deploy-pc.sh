@@ -1,10 +1,18 @@
 #!/bin/bash
 # url-stocker-pc.vercel.app への正しいデプロイ手順
 # 使い方: ./deploy-pc.sh
+#
+# 事前準備: ~/.zshrc に以下を追加しておく
+#   export VERCEL_TOKEN="your_token_here"
 
 set -e
 
-VERCEL_TOKEN="${VERCEL_TOKEN}"
+if [ -z "$VERCEL_TOKEN" ]; then
+  echo "❌ VERCEL_TOKEN が設定されていません"
+  echo "   ~/.zshrc に export VERCEL_TOKEN='トークン' を追加してください"
+  exit 1
+fi
+
 TARGET_ALIAS="url-stocker-pc.vercel.app"
 
 echo "▶ 現在のブランチを確認..."

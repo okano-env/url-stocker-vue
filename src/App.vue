@@ -266,7 +266,7 @@ function load(sheet) {
 
 function renderData(data) {
   sheetName.value = data.sheetName
-  document.title = 'たまるん'
+  document.title = 'PCの仕組み | 学習メモ'
   const total = data.cards.length
   allCards.value = data.cards.map((c, i) => ({ ...c, originalIndex: total - i }))
   if (showTabs) sheets.value = data.sheets || []
@@ -315,12 +315,9 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 <template>
   <header>
     <div class="header-row1">
-      <p class="site-name">たまるん</p>
+      <p class="site-name">📚 PCの仕組み</p>
       <div class="header-actions">
-        <button v-if="showTabs" class="icon-btn tip" data-tip="現在のシートのURLをコピー" @click="copyShareUrl">🔗</button>
-        <button v-if="showTabs" class="cta-btn tip" data-tip="複数URLをまとめて登録" @click="openBulk">📥 とうろくんへ</button>
         <button class="icon-btn tip" data-tip="使い方を見る" @click="helpOpen = true">📖</button>
-        <button class="icon-btn tip" data-tip="ご意見・ご要望はこちら" @click="feedbackOpen = true">💬</button>
         <div class="seg-pill theme-pill">
           <button :class="['seg-opt', 'theme-opt', { active: theme === 'light' }]" @click="toggleTheme">☀️</button>
           <button :class="['seg-opt', 'theme-opt', { active: theme === 'dark' }]" @click="toggleTheme">🌙</button>
