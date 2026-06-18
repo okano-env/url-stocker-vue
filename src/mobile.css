@@ -133,9 +133,12 @@
   .preview-counter { font-size: .78rem; }
   .preview-copy-btn { padding: 6px 10px; font-size: .75rem; }
   .preview-open-btn { padding: 6px 12px; font-size: .75rem; }
-  .preview-footer { padding: 12px 16px; }
-  .preview-footer .back-btn { padding: 16px; font-size: 1rem; }
-  .preview-related { padding: 0 12px; gap: 8px; }
+  .preview-footer { padding: 6px 12px; }
+  .preview-footer .back-btn { padding: 8px 12px; font-size: .82rem; }
+  .preview-related { padding: 0 12px; gap: 6px; }
+  .preview-related .related-item { padding: 8px 12px; }
+  .preview-related .related-label { font-size: .72rem; }
+  .preview-related .related-title { font-size: .78rem; }
 
   /* ── トースト：スマホでは下に固定 ── */
   #toast { bottom: 72px; font-size: .8rem; padding: 8px 18px; }
