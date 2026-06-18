@@ -175,6 +175,41 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 const feedbackOpen = ref(false)
 const helpOpen = ref(false)
 
+// ── CRUD（編集・削除）──
+const editTarget = ref(null)
+const editTitle = ref('')
+
+function openEdit(card) {
+  editTarget.value = card
+  editTitle.value = card.title
+}
+function closeEdit() { editTarget.value = null }
+
+async function submitEdit() {
+  const card = editTarget.value
+  const newTitle = editTitle.value.trim()
+  if (!newTitle || newTitle === card.title) { closeEdit(); return }
+  allCards.value = allCards.value.map(c => c.url === card.url ? { ...c, title: newTitle } : c)
+  closeEdit()
+  showToast('✏️ タイトルを更新しました')
+  fetch(GAS_URL, {
+    method: 'POST',
+    body: JSON.stringify({ type: 'edit', sheet: sheetName.value, url: card.url, newTitle })
+  }).catch(() => {})
+}
+
+function deleteCard(card) {
+  const pw = window.prompt(`「${card.title}」を削除します。\nパスワードを入力してください。`)
+  if (pw === null) return
+  if (pw !== '0130') { showToast('❌ パスワードが違います'); return }
+  allCards.value = allCards.value.filter(c => c.originalIndex !== card.originalIndex)
+  showToast('🗑️ 削除しました')
+  fetch(GAS_URL, {
+    method: 'POST',
+    body: JSON.stringify({ type: 'delete', sheet: sheetName.value, url: card.url, rowIndex: card.originalIndex })
+  }).catch(() => {})
+}
+
 // ── フォーカスモード ──
 const focusIndex = ref(0)
 const focusActive = ref(false)
@@ -336,9 +371,12 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     :favorites="favorites"
     :current-cols="currentCols"
     :show-images="showImages"
+    :has-key="showTabs"
     @open-focus="openFocus"
     @toggle-fav="toggleFav"
     @copy-url="copyUrl"
+    @edit-card="openEdit"
+    @delete-card="deleteCard"
   />
 
   <Teleport to="body">
@@ -359,6 +397,18 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       @sent="showToast('✅ 送信しました！ご意見ありがとうございます🙏')"
     />
     <HelpModal v-if="helpOpen" @close="helpOpen = false" />
+
+    <!-- 編集モーダル -->
+    <div v-if="editTarget" class="edit-overlay" @click.self="closeEdit">
+      <div class="edit-modal">
+        <p class="edit-label">タイトルを編集</p>
+        <input class="edit-input" v-model="editTitle" @keydown.enter="submitEdit" @keydown.escape="closeEdit" autofocus />
+        <div class="edit-actions">
+          <button class="edit-cancel" @click="closeEdit">キャンセル</button>
+          <button class="edit-submit" @click="submitEdit">保存</button>
+        </div>
+      </div>
+    </div>
 
     <div :id="'toast'" :class="{ show: toastVisible }">{{ toastMsg }}</div>
 

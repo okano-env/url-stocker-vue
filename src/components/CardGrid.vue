@@ -6,8 +6,9 @@ const props = defineProps({
   favorites: Array,
   currentCols: Number,
   showImages: Boolean,
+  hasKey: Boolean,
 })
-const emit = defineEmits(['open-focus', 'toggle-fav', 'copy-url'])
+const emit = defineEmits(['open-focus', 'toggle-fav', 'copy-url', 'edit-card', 'delete-card'])
 
 function isFav(url) { return props.favorites.includes(url) }
 function faviconUrl(domain) { return `https://www.google.com/s2/favicons?domain=${domain}&sz=32` }
@@ -41,6 +42,10 @@ function onImgError(e) { e.target.src = noImage }
         >{{ isFav(c.url) ? '★' : '☆' }}</button>
       </div>
       <button class="copy-btn" @click.stop="emit('copy-url', c.url)">📋 コピー</button>
+      <div v-if="hasKey" class="admin-btns">
+        <button class="admin-btn edit-btn" @click.stop="emit('edit-card', c)">✏️</button>
+        <button class="admin-btn del-btn" @click.stop="emit('delete-card', c)">🗑️</button>
+      </div>
     </div>
   </div>
 </template>
