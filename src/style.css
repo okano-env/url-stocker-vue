@@ -376,7 +376,7 @@ input[type="text"]:focus {
 .preview-related { padding: 0 20px; margin-top: 8px; }
 
 /* ── iframeプレビュー ── */
-.focus-preview { background: var(--surface); border: 1px solid var(--accent); border-radius: 20px; width: 92vw; max-width: 1100px; height: 88vh; box-shadow: 0 8px 48px rgba(2,151,224,.3); animation: pop .18s ease; display: flex; flex-direction: column; overflow: hidden; }
+.focus-preview { background: var(--surface); border: 1px solid var(--accent); border-radius: 20px; width: 97vw; max-width: 1800px; height: 94vh; box-shadow: 0 8px 48px rgba(2,151,224,.3); animation: pop .18s ease; display: flex; flex-direction: column; overflow: hidden; }
 .preview-header { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
 .preview-favicon { width: 18px; height: 18px; flex-shrink: 0; }
 .preview-counter { color: var(--accent-lt); font-size: .875rem; flex-shrink: 0; }
