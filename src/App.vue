@@ -266,7 +266,7 @@ function load(sheet) {
 
 function renderData(data) {
   sheetName.value = data.sheetName
-  document.title = 'PCの仕組み | 学習メモ'
+  document.title = 'PCの仕組み'
   const total = data.cards.length
   allCards.value = data.cards.map((c, i) => ({ ...c, originalIndex: total - i }))
   if (showTabs) sheets.value = data.sheets || []
@@ -315,7 +315,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 <template>
   <header>
     <div class="header-row1">
-      <p class="site-name">📚 PCの仕組み</p>
+      <p class="site-name">📚 たまるん</p>
       <div class="header-actions">
         <button class="icon-btn tip" data-tip="使い方を見る" @click="helpOpen = true">📖</button>
         <div class="seg-pill theme-pill">
