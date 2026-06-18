@@ -315,7 +315,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 <template>
   <header>
     <div class="header-row1">
-      <p class="site-name">📚 たまるん</p>
+      <p class="site-name">たまるん</p>
       <div class="header-actions">
         <button class="icon-btn tip" data-tip="使い方を見る" @click="helpOpen = true">📖</button>
         <div class="seg-pill theme-pill">
