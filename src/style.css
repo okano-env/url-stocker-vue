@@ -303,8 +303,7 @@ input[type="text"]:focus {
   padding: 10px 14px 8px;
   min-width: 0;
 }
-/* 【対比】通し番号を廃止 — ノイズを減らしてタイトルを主役に */
-.card-num { display: none; }
+.card-num { font-size: .68rem; color: var(--muted); flex-shrink: 0; }
 .favicon { width: 13px; height: 13px; flex-shrink: 0; opacity: .7; }
 .domain { color: var(--muted); font-size: .68rem; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .date { color: var(--muted); font-size: .65rem; flex-shrink: 0; }
