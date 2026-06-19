@@ -293,7 +293,7 @@ input[type="text"]:focus {
 .card.is-fav::before { opacity: 1; background: linear-gradient(90deg, var(--gold), var(--orange)); }
 
 /* 【整列・反復】サムネイル画像 — 全カードで同じ比率に揃えて視覚的なリズムを作る */
-.thumbnail { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.thumbnail { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
 
 /* 【近接】メタ情報エリア — 背景を抑えてタイトルとのコントラストを作る */
 .card-top {
