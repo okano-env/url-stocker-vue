@@ -328,7 +328,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
 <template>
   <header>
     <div class="header-row1">
-      <p class="site-name">たまるん</p>
+      <p class="site-name"><img src="./assets/tamarun-chara.png" class="site-chara" alt="たまるん" />たまるん</p>
       <div class="header-actions">
         <button v-if="showTabs" class="icon-btn tip" data-tip="現在のシートのURLをコピー" @click="copyShareUrl">🔗</button>
         <button v-if="showTabs" class="cta-btn tip" data-tip="複数URLをまとめて登録" @click="openBulk">📥 とうろくんへ</button>
