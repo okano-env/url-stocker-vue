@@ -98,7 +98,7 @@ header {
   flex-shrink: 0;
   text-transform: uppercase;
 }
-.site-name::before { content: '📚'; font-size: 1rem; }
+.site-chara { width: 2rem; height: 2rem; object-fit: contain; }
 /* 【対比】フッターはヘッダーと対になるよう同色系で締める */
 .app-footer {
   margin-top: auto;
