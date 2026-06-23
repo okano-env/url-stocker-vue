@@ -336,6 +336,8 @@ input[type="text"]:focus {
 #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* ── スクロールトップ ── */
+.fab-add-btn { position: fixed; bottom: 80px; right: 24px; width: 52px; height: 52px; border-radius: 50%; background: var(--accent); border: none; color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 200; box-shadow: 0 4px 16px rgba(2,151,224,.5); transition: .15s; }
+.fab-add-btn:hover { background: var(--accent-lt); transform: scale(1.1) translateY(-2px); box-shadow: 0 6px 24px rgba(2,151,224,.6); }
 .scroll-top-btn { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--surface2); border: 1px solid var(--border); color: var(--accent-lt); font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: .15s; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,.4); }
 .scroll-top-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); }
 
