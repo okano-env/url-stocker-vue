@@ -526,3 +526,23 @@ input[type="text"]:focus {
 .edit-cancel { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: none; color: var(--muted); cursor: pointer; }
 .edit-submit { padding: 8px 20px; border-radius: 8px; border: none; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; }
 .edit-submit:hover { background: var(--accent2); }
+
+/* ── 新規追加モーダル ── */
+.add-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 300; padding: 20px; }
+.add-modal { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; width: 100%; max-width: 460px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.5); }
+.add-hero { background: linear-gradient(135deg, #0a1628 0%, #0f2040 100%); padding: 28px 28px 20px; display: flex; align-items: center; gap: 20px; }
+.add-svg { width: 120px; height: 75px; flex-shrink: 0; }
+.add-catchcopy { flex: 1; }
+.add-catch-main { font-size: 1.05rem; font-weight: 900; color: #fff; line-height: 1.5; margin-bottom: 6px; }
+.add-catch-sub { font-size: .8rem; color: #4a9eca; }
+.add-form-area { padding: 24px 28px; }
+.add-sheet-badge { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; color: var(--accent-lt); background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 12px; margin-bottom: 14px; }
+.add-input-row { display: flex; gap: 8px; }
+.add-input { flex: 1; padding: 12px 14px; border-radius: 10px; border: 1.5px solid var(--border); background: var(--surface2); color: var(--text); font-size: .95rem; outline: none; min-width: 0; }
+.add-input:focus { border-color: var(--accent); }
+.add-btn { padding: 12px 20px; border-radius: 10px; border: none; background: var(--accent); color: #fff; font-weight: 700; font-size: .9rem; cursor: pointer; white-space: nowrap; transition: .15s; }
+.add-btn:hover:not(:disabled) { background: var(--accent2); }
+.add-btn:disabled { opacity: .5; cursor: default; }
+.add-note { font-size: .75rem; color: var(--muted); margin-top: 10px; }
+.add-close { position: absolute; top: 14px; right: 14px; background: rgba(255,255,255,.1); border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; font-size: .85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: .15s; }
+.add-close:hover { background: rgba(255,255,255,.2); }

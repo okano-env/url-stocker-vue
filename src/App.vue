@@ -5,6 +5,7 @@ import CardGrid from './components/CardGrid.vue'
 import FocusModal from './components/FocusModal.vue'
 import FeedbackModal from './components/FeedbackModal.vue'
 import HelpModal from './components/HelpModal.vue'
+import AddModal from './components/AddModal.vue'
 
 const copyrightYear = new Date().getFullYear()
 
@@ -180,6 +181,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 // ── 意見箱 / 使い方 ──
 const feedbackOpen = ref(false)
 const helpOpen = ref(false)
+const addOpen = ref(false)
 
 // ── CRUD（編集・削除）──
 const editTarget = ref(null)
@@ -390,7 +392,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     @copy-url="copyUrl"
     @edit-card="openEdit"
     @delete-card="deleteCard"
-    @add-card="openBulk"
+    @add-card="addOpen = true"
   />
 
   <Teleport to="body">
@@ -411,6 +413,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       @sent="showToast('✅ 送信しました！ご意見ありがとうございます🙏')"
     />
     <HelpModal v-if="helpOpen" @close="helpOpen = false" />
+    <AddModal v-if="addOpen" :sheet="currentSheet || 'STOCK'" @close="addOpen = false" @added="load(currentSheet)" />
 
     <!-- 編集モーダル -->
     <div v-if="editTarget" class="edit-overlay" @click.self="closeEdit">
