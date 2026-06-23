@@ -182,7 +182,11 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 const feedbackOpen = ref(false)
 const helpOpen = ref(false)
 const addOpen = ref(false)
-function onAdded() { addOpen.value = false; setTimeout(() => load(currentSheet.value), 3000) }
+function onAdded() {
+  addOpen.value = false
+  // GASの処理時間に合わせて3回自動リロード（5秒・15秒・30秒後）
+  ;[5000, 15000, 30000].forEach(ms => setTimeout(() => load(currentSheet.value), ms))
+}
 
 const isRefreshing = ref(false)
 async function refresh() {
