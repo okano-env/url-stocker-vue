@@ -8,7 +8,7 @@ const props = defineProps({
   showImages: Boolean,
   hasKey: Boolean,
 })
-const emit = defineEmits(['open-focus', 'toggle-fav', 'copy-url', 'edit-card', 'delete-card'])
+const emit = defineEmits(['open-focus', 'toggle-fav', 'copy-url', 'edit-card', 'delete-card', 'add-card'])
 
 function isFav(url) { return props.favorites.includes(url) }
 function faviconUrl(domain) { return `https://www.google.com/s2/favicons?domain=${domain}&sz=32` }
@@ -49,6 +49,12 @@ function thumbSrc(c) {
       <div v-if="hasKey" class="admin-btns">
         <button class="admin-btn edit-btn" @click.stop="emit('edit-card', c)">✏️</button>
         <button class="admin-btn del-btn" @click.stop="emit('delete-card', c)">🗑️</button>
+      </div>
+    </div>
+    <div v-if="hasKey" class="card card-add" @click="emit('add-card')">
+      <div class="card-add-inner">
+        <span class="card-add-plus">＋</span>
+        <span class="card-add-label">新規追加</span>
       </div>
     </div>
   </div>

@@ -291,6 +291,12 @@ input[type="text"]:focus {
 }
 .card:hover::before { opacity: 1; }
 .card.is-fav::before { opacity: 1; background: linear-gradient(90deg, var(--gold), var(--orange)); }
+.card.card-add { border: 2px dashed var(--border); background: transparent; display: flex; align-items: center; justify-content: center; padding: 0; min-height: 160px; }
+.card.card-add::before { display: none; }
+.card.card-add:hover { border-color: var(--accent); background: rgba(2,151,224,.05); transform: translateY(-4px); }
+.card-add-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); }
+.card-add-plus { font-size: 2.4rem; line-height: 1; color: var(--accent); }
+.card-add-label { font-size: .85rem; letter-spacing: .05em; }
 
 /* 【整列・反復】サムネイル画像 — 全カードで同じ比率に揃えて視覚的なリズムを作る */
 .thumbnail { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }

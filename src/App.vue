@@ -390,6 +390,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     @copy-url="copyUrl"
     @edit-card="openEdit"
     @delete-card="deleteCard"
+    @add-card="openBulk"
   />
 
   <Teleport to="body">
