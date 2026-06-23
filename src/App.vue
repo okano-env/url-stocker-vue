@@ -331,7 +331,7 @@ onMounted(() => {
   // ハッシュがなければ: 前回開いたシート → なければ「ログ」をデフォルト表示
   if (!currentSheet.value) {
     const last = localStorage.getItem('url-stocker-last-sheet')
-    const defaultSheet = last || 'ログ'
+    const defaultSheet = last || 'STOCK'
     currentSheet.value = defaultSheet
     history.replaceState(null, '', '#' + encodeURIComponent(defaultSheet))
   }
