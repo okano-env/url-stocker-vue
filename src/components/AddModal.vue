@@ -89,7 +89,6 @@ function onOverlayClick(e) {
             <span v-else>✅ 完了！</span>
           </button>
         </div>
-        <p class="add-note">タイトルと画像はGASが自動取得します</p>
       </div>
 
       <button class="add-close" @click="emit('close')">✕</button>
