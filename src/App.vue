@@ -426,13 +426,6 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
     <div :id="'toast'" :class="{ show: toastVisible }">{{ toastMsg }}</div>
 
     <button
-      v-if="showTabs"
-      class="fab-add-btn"
-      title="URLを登録する"
-      @click="openBulk"
-    >＋</button>
-
-    <button
       v-if="showScrollTop"
       class="scroll-top-btn"
       @click="scrollToTop"
