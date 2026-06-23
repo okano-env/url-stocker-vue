@@ -184,6 +184,14 @@ const helpOpen = ref(false)
 const addOpen = ref(false)
 function onAdded() { addOpen.value = false; setTimeout(() => load(currentSheet.value), 3000) }
 
+const isRefreshing = ref(false)
+async function refresh() {
+  if (isRefreshing.value) return
+  isRefreshing.value = true
+  await load(currentSheet.value)
+  setTimeout(() => { isRefreshing.value = false }, 600)
+}
+
 // ── CRUD（編集・削除）──
 const editTarget = ref(null)
 const editTitle = ref('')
@@ -334,6 +342,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       <p class="site-name"><img src="./assets/tamarun-chara.png" class="site-chara" alt="たまるん" />たまるん</p>
       <div class="header-actions">
         <button v-if="showTabs" class="icon-btn tip" data-tip="現在のシートのURLをコピー" @click="copyShareUrl">🔗</button>
+        <button class="icon-btn tip" :class="{ spinning: isRefreshing }" data-tip="最新データに更新" @click="refresh">🔄</button>
         <button v-if="showTabs" class="cta-btn tip" data-tip="複数URLをまとめて登録" @click="openBulk">📥 とうろくんへ</button>
         <button class="icon-btn tip" data-tip="使い方を見る" @click="helpOpen = true">📖</button>
         <button class="icon-btn tip" data-tip="ご意見・ご要望はこちら" @click="feedbackOpen = true">💬</button>
