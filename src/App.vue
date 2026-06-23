@@ -182,6 +182,7 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
 const feedbackOpen = ref(false)
 const helpOpen = ref(false)
 const addOpen = ref(false)
+function onAdded() { addOpen.value = false; setTimeout(() => load(currentSheet.value), 3000) }
 
 // ── CRUD（編集・削除）──
 const editTarget = ref(null)
@@ -413,7 +414,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       @sent="showToast('✅ 送信しました！ご意見ありがとうございます🙏')"
     />
     <HelpModal v-if="helpOpen" @close="helpOpen = false" />
-    <AddModal v-if="addOpen" :sheet="sheetName || currentSheet || 'STOCK'" @close="addOpen = false" @added="setTimeout(() => load(currentSheet), 3000)" />
+    <AddModal v-if="addOpen" :sheet="sheetName || currentSheet || 'STOCK'" @close="addOpen = false" @added="onAdded" />
 
     <!-- 編集モーダル -->
     <div v-if="editTarget" class="edit-overlay" @click.self="closeEdit">
