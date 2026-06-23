@@ -413,7 +413,7 @@ onUnmounted(() => window.removeEventListener('hashchange', onHashChange))
       @sent="showToast('✅ 送信しました！ご意見ありがとうございます🙏')"
     />
     <HelpModal v-if="helpOpen" @close="helpOpen = false" />
-    <AddModal v-if="addOpen" :sheet="currentSheet || 'STOCK'" @close="addOpen = false" @added="load(currentSheet)" />
+    <AddModal v-if="addOpen" :sheet="sheetName || currentSheet || 'STOCK'" @close="addOpen = false" @added="setTimeout(() => load(currentSheet), 3000)" />
 
     <!-- 編集モーダル -->
     <div v-if="editTarget" class="edit-overlay" @click.self="closeEdit">

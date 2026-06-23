@@ -12,18 +12,21 @@ const state = ref('idle') // idle | sending | done
 async function submit() {
   const url = inputUrl.value.trim()
   if (!url || !url.startsWith('http')) return
+  const payload = { sheet: props.sheet, urls: [url] }
+  console.log('[AddModal] sending:', payload)
   state.value = 'sending'
   try {
     await fetch(GAS_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sheet: props.sheet, urls: [url] })
+      body: JSON.stringify(payload)
     })
+    console.log('[AddModal] fetch done (no-cors: response opaque)')
     state.value = 'done'
-    emit('added')
-    setTimeout(() => emit('close'), 1800)
-  } catch {
+    setTimeout(() => { emit('added'); emit('close') }, 3000)
+  } catch(e) {
+    console.error('[AddModal] fetch error:', e)
     state.value = 'idle'
   }
 }
