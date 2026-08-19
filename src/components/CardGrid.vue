@@ -13,6 +13,11 @@ const emit = defineEmits(['open-focus', 'toggle-fav', 'copy-url', 'edit-card', '
 function isFav(url) { return props.favorites.includes(url) }
 function faviconUrl(domain) { return `https://www.google.com/s2/favicons?domain=${domain}&sz=32` }
 function onImgError(e) { e.target.src = noImage }
+// カードのサムネイル画像URLを返す（描画完了を待てないSPAはプレースホルダー）
+function thumbSrc(c) {
+  if (c.url && c.url.includes('vercel.app')) return noImage
+  return c.image || noImage
+}
 </script>
 
 <template>
@@ -27,7 +32,7 @@ function onImgError(e) { e.target.src = noImage }
       :class="['card', { 'is-fav': isFav(c.url) }]"
       @click="emit('open-focus', i)"
     >
-      <img v-if="showImages" class="thumbnail" :src="(c.image && !c.image.includes('thum.io')) ? c.image : noImage" :alt="c.title" loading="lazy" @error="onImgError">
+      <img v-if="showImages" class="thumbnail" :src="thumbSrc(c)" :alt="c.title" loading="lazy" @error="onImgError">
       <div class="card-top">
         <span class="card-num">{{ c.originalIndex }}</span>
         <img class="favicon" :src="faviconUrl(c.domain)" @error="e => e.target.style.display='none'">
